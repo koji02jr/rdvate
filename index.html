@@ -335,6 +335,8 @@
   .hero h1 .rd .ev { color: var(--red); }
   .hero p.lede { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 52ch; margin: 26px auto 0; }
   .hero-cta { display:flex; gap: 14px; justify-content:center; margin-top: 34px; flex-wrap: wrap; }
+  .cta-note { text-align: center; margin: 16px 0 0; font-size: 14px; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; justify-content: center; width: 100%; }
+  .cta-note::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px var(--red-tint); flex: none; }
 
   /* marquee */
   .marquee { margin-top: clamp(48px, 7vw, 84px); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); background: var(--surface); overflow: hidden; }
@@ -688,9 +690,10 @@
           <span class="lb-bg" aria-hidden="true"></span>
           <span class="lb-distort" aria-hidden="true"></span>
           <span class="lb-shine" aria-hidden="true"></span>
-          <span class="lb-label">Let's Rise Together <span class="arrow">&rarr;</span></span>
+          <span class="lb-label">Say Hello <span class="arrow">&rarr;</span></span>
         </a>
       </div>
+      <p class="cta-note reveal">Free 30-min chat — no pitch, no pressure. Just say hi.</p>
     </div>
     <div class="marquee reveal" aria-hidden="true">
       <div class="marquee-track">
