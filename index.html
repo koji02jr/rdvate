@@ -274,7 +274,9 @@
     box-shadow: 0 10px 24px -12px rgba(0,0,0,.4);
     clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
     transition: clip-path .55s cubic-bezier(.22,.61,.36,1), box-shadow .55s;
-    will-change: clip-path;
+    transform-origin: 32% 84%;
+    animation: stickOn 1.05s cubic-bezier(.34,1.28,.5,1) .35s backwards;
+    will-change: clip-path, transform;
   }
   .hero h1 .noise-wrap:hover .hl,
   .hero h1 .noise-wrap.peeled .hl {
@@ -292,12 +294,27 @@
     box-shadow: -4px -4px 12px rgba(0,0,0,.32);
     transform-origin: 100% 100%; transform: scale(.85);
     transition: transform .55s cubic-bezier(.22,.61,.36,1);
+    animation: peelStick 1.05s cubic-bezier(.34,1.28,.5,1) .35s backwards;
     will-change: transform;
   }
   .hero h1 .noise-wrap:hover .peel,
   .hero h1 .noise-wrap.peeled .peel { transform: scale(2); }
+  @keyframes stickOn {
+    0%   { transform: rotate(-7deg) translate(-7px, -16px) scale(1.09);
+           box-shadow: 0 28px 44px -14px rgba(0,0,0,.5); }
+    52%  { transform: rotate(2.4deg) translate(1px, 3px) scale(.985); }
+    74%  { transform: rotate(-1deg) translate(0, 0) scale(1.004); }
+    100% { transform: rotate(0) translate(0, 0) scale(1);
+           box-shadow: 0 10px 24px -12px rgba(0,0,0,.4); }
+  }
+  @keyframes peelStick {
+    0%   { transform: scale(2.2); }
+    52%  { transform: scale(.68); }
+    74%  { transform: scale(.95); }
+    100% { transform: scale(.85); }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .hero h1 .hl, .hero h1 .peel { transition: none; }
+    .hero h1 .hl, .hero h1 .peel { transition: none; animation: none; }
   }
   .hero h1 .rd { display:inline-flex; align-items:center; gap:.16em; color: var(--navy); }
   :root[data-theme="dark"] .hero h1 .rd { color: var(--on-navy); }
