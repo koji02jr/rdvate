@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Editor / tooling
+.claude/
+.vscode/
+.idea/
+
+# Dependencies / logs (not used yet, here for safety)
+node_modules/
+*.log
