@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0DA25A">
-<title>Work — RDVate</title>
-<meta name="description" content="Selected work by RDVate — brand, web, and marketing case studies with real results.">
+<title>Start Your Project — RDVate</title>
+<meta name="description" content="Start your project with RDVate — book a free 30-minute strategy call.">
 <style>
 @font-face {
   font-family: "Bricolage Grotesque";
@@ -52,86 +52,267 @@ html { scroll-behavior:smooth; }
 body { margin:0; background:var(--ground); color:var(--ink); font-family:var(--f-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; }
 .wrap { max-width:1180px; margin-inline:auto; padding-inline:clamp(20px,5vw,56px); }
 a { color:inherit; text-decoration:none; }
-img { max-width:100%; display:block; }
 h1,h2,h3,h4 { font-family:var(--f-display); font-weight:700; letter-spacing:-.02em; margin:0; text-wrap:balance; }
 .eyebrow { font-family:var(--f-mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--red-ink); display:inline-flex; align-items:center; gap:9px; }
 .eyebrow::before { content:""; width:20px; height:1.5px; background:currentColor; }
-.btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--f-body); font-size:15px; font-weight:560; border-radius:11px; padding:12px 20px; cursor:pointer; border:1px solid transparent; transition:transform .15s,background .2s,border-color .2s,color .2s; }
+.btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--f-body); font-size:15px; font-weight:560; border-radius:11px; padding:12px 20px; cursor:pointer; border:1px solid transparent; transition:transform .15s,background .2s,border-color .2s; }
 .btn:active { transform:translateY(1px); }
-.btn-red { background:var(--red); color:#fff; }
-.btn-red:hover { background:var(--red-ink); }
-.btn-ghost { background:transparent; color:var(--ink); border-color:var(--hairline-strong); }
-.btn-ghost:hover { border-color:var(--ink); }
+.btn-red { background:var(--red); color:#fff; } .btn-red:hover { background:var(--red-ink); }
 .btn .arrow { transition:transform .2s; } .btn:hover .arrow { transform:translateX(3px); }
 header.nav { position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--ground) 84%,transparent); backdrop-filter:saturate(1.4) blur(14px); border-bottom:1px solid var(--hairline); }
 .nav-inner { display:flex; align-items:center; justify-content:space-between; height:70px; gap:20px; }
 .brand { display:inline-flex; align-items:center; gap:10px; font-family:var(--f-display); font-weight:700; font-size:22px; letter-spacing:-.03em; color:var(--ink); }
 .brand .mark { width:31px; height:31px; border-radius:9px; display:grid; place-items:center; flex:none; background:linear-gradient(150deg,color-mix(in srgb,var(--red) 78%,#fff),var(--red) 52%,color-mix(in srgb,var(--red) 86%,#000)); box-shadow:0 3px 10px -3px color-mix(in srgb,var(--red) 55%,transparent),inset 0 1px 0 rgba(255,255,255,.4); }
-.brand .mark svg { width:17px; height:17px; color:#fff; }
-.brand b { color:var(--red-ink); }
+.brand .mark svg { width:17px; height:17px; color:#fff; } .brand b { color:var(--red-ink); }
 .nlinks { display:flex; align-items:center; gap:28px; }
-.nlinks a { font-size:14.5px; color:var(--ink-soft); transition:color .2s; }
-.nlinks a:hover, .nlinks a.on { color:var(--red-ink); }
-.page-hero { padding:clamp(48px,7vw,92px) 0 clamp(20px,3vw,34px); }
-.page-hero h1 { font-size:clamp(38px,6vw,64px); line-height:1.04; margin:18px 0 0; }
-.page-hero p { color:var(--muted); font-size:clamp(17px,2vw,20px); max-width:58ch; margin:20px 0 0; }
-.blk { padding:clamp(40px,5vw,68px) 0; }
-.cta-band { margin:clamp(30px,5vw,60px) 0 clamp(56px,8vw,100px); }
-.cta-card { background:linear-gradient(160deg,var(--navy),var(--navy-2)); color:var(--on-navy); border-radius:24px; padding:clamp(40px,6vw,72px) var(--gutter,40px); text-align:center; }
-.cta-card h2 { color:#fff; font-size:clamp(28px,4vw,44px); }
-.cta-card p { color:rgba(237,240,251,.75); margin:16px auto 26px; max-width:44ch; }
-footer { border-top:1px solid var(--hairline); padding:54px 0 40px; margin-top:clamp(40px,6vw,80px); }
-.foot-top { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:34px; }
-.foot-tag { color:var(--muted); font-size:15px; margin-top:12px; max-width:30ch; }
-.foot-col h4 { font-family:var(--f-mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:4px 0 14px; font-weight:500; }
-.foot-col a { display:block; font-size:15px; color:var(--ink-soft); padding:5px 0; }
-.foot-col a:hover { color:var(--red-ink); }
-.foot-bot { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:46px; padding-top:22px; border-top:1px solid var(--hairline); font-size:13px; color:var(--muted); font-family:var(--f-mono); }
-/* services */
-.svc-list { display:flex; flex-direction:column; gap:16px; }
-.scard { display:grid; grid-template-columns:auto 1fr auto; gap:24px; align-items:start; background:var(--surface); border:1px solid var(--hairline); border-radius:18px; padding:30px 32px; transition:transform .2s,box-shadow .25s; }
-.scard:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
-.scard .ic { width:52px; height:52px; border-radius:13px; background:var(--red-tint); color:var(--red-ink); display:grid; place-items:center; }
-.scard .ic svg { width:26px; height:26px; }
-.scard h3 { font-size:22px; font-weight:660; }
-.scard p { color:var(--muted); font-size:15.5px; margin:8px 0 0; max-width:60ch; }
-.scard ul { list-style:none; margin:16px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px 18px; }
-.scard li { font-size:13.5px; color:var(--ink-soft); display:flex; align-items:center; gap:7px; }
-.scard li::before { content:""; width:5px; height:5px; border-radius:50%; background:var(--red); }
-.scard .num { font-family:var(--f-mono); font-size:13px; color:var(--muted); }
-/* work */
-.work-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
-.wcard { background:var(--surface); border:1px solid var(--hairline); border-radius:18px; overflow:hidden; transition:transform .2s,box-shadow .25s; }
-.wcard:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
-.wcard .thumb { aspect-ratio:16/8.5; position:relative; display:grid; place-items:center; }
-.wcard .thumb span.nm { font-family:var(--f-display); font-weight:720; font-size:clamp(26px,4vw,40px); color:#fff; text-shadow:0 2px 20px rgba(0,0,0,.25); }
-.wcard .thumb .tag { position:absolute; top:14px; left:14px; font-family:var(--f-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:#fff; background:rgba(0,0,0,.28); backdrop-filter:blur(4px); border-radius:6px; padding:5px 9px; }
-.wcard .body { padding:24px 26px 28px; }
-.wcard h3 { font-size:19px; font-weight:640; line-height:1.25; }
-.wcard .sub { color:var(--muted); font-size:14.5px; margin:9px 0 20px; }
-.wcard .kpis { display:flex; gap:30px; }
-.wcard .k { font-family:var(--f-mono); font-size:26px; font-weight:600; color:var(--red-ink); letter-spacing:-.02em; }
-.wcard .kl { font-size:12.5px; color:var(--muted); margin-top:3px; max-width:20ch; }
-/* blog */
-.blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-.bcard { background:var(--surface); border:1px solid var(--hairline); border-radius:18px; overflow:hidden; transition:transform .2s,box-shadow .25s; }
-.bcard:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
-.bcard .cover { aspect-ratio:16/9; }
-.bcard .pbody { padding:20px 22px 24px; }
-.bcard .meta { font-family:var(--f-mono); font-size:11.5px; letter-spacing:.06em; color:var(--muted); text-transform:uppercase; display:flex; gap:14px; }
-.bcard h3 { font-size:17.5px; line-height:1.32; font-weight:620; margin:12px 0 0; }
-@media (max-width:820px){ .nlinks{ display:none; } .work-grid{ grid-template-columns:1fr; } .blog-grid{ grid-template-columns:1fr; } .foot-top{ grid-template-columns:1fr 1fr; } .scard{ grid-template-columns:auto 1fr; } .scard .num{ display:none; } }
+.nlinks a { font-size:14.5px; color:var(--ink-soft); } .nlinks a:hover { color:var(--red-ink); }
+.book-hero { padding:clamp(56px,9vw,110px) 0 clamp(30px,5vw,60px); text-align:center; }
+.book-hero .in { max-width:720px; margin-inline:auto; }
+.book-hero h1 { font-size:clamp(40px,6.4vw,72px); line-height:1.03; margin:18px 0 0; }
+.book-hero p { color:var(--muted); font-size:clamp(17px,2vw,20px); margin:22px auto 0; max-width:52ch; }
+.book-cta { margin-top:34px; }
+.book-cta .big { padding:16px 32px; font-size:17px; border-radius:999px; }
+.qmeta { font-family:var(--f-mono); font-size:13px; letter-spacing:.04em; color:var(--muted); margin-top:18px; }
+.expect { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:900px; margin:clamp(40px,6vw,72px) auto clamp(56px,8vw,110px); }
+.ecard { background:var(--surface); border:1px solid var(--hairline); border-radius:16px; padding:26px 24px; text-align:left; }
+.ecard .n { font-family:var(--f-mono); font-weight:600; color:var(--red-ink); font-size:14px; width:34px; height:34px; border-radius:10px; background:var(--red-tint); display:grid; place-items:center; margin-bottom:14px; }
+.ecard h3 { font-size:17px; font-weight:640; } .ecard p { font-size:14px; color:var(--muted); margin:7px 0 0; }
+footer { border-top:1px solid var(--hairline); padding:40px 0; }
+.foot-bot { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--muted); font-family:var(--f-mono); }
+@media (max-width:820px){ .nlinks{ display:none; } .expect{ grid-template-columns:1fr; } }
 
+/* ---------- SCHEDULING MODAL ---------- */
+  .sched-overlay { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px;
+    background: color-mix(in srgb, var(--ink) 34%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+  body.sched-open .sched-overlay { opacity: 1; visibility: visible; }
+  .sched-card { position: relative; width: min(940px, 100%); max-height: 90vh; overflow: auto; background: var(--surface);
+    border-radius: 24px; box-shadow: 0 40px 90px -30px rgba(0,0,0,.55); display: grid;
+    grid-template-columns: 258px 1fr 230px; transform: scale(.96) translateY(12px); transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+  body.sched-open .sched-card { transform: none; }
+  .sched-close { position: absolute; top: 16px; right: 16px; z-index: 3; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--hairline); background: var(--surface); color: var(--muted); cursor: pointer; display: grid; place-items: center; }
+  .sched-close:hover { color: var(--ink); border-color: var(--hairline-strong); }
+  .sched-info { padding: 26px 24px; border-right: 1px solid var(--hairline); }
+  .sched-info .brand-mark { margin-bottom: 18px; }
+  .sched-info .si-eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; color: var(--muted); }
+  .sched-info h3 { font-size: 22px; font-weight: 680; margin: 6px 0 16px; letter-spacing: -.01em; }
+  .sched-info p { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0 0 20px; }
+  .sched-meta { display: flex; flex-direction: column; gap: 11px; font-size: 14px; color: var(--ink-soft); }
+  .sched-meta div { display: flex; align-items: center; gap: 9px; }
+  .sched-meta svg { width: 17px; height: 17px; color: var(--muted); flex: none; }
+  .sched-cal { padding: 24px; border-right: 1px solid var(--hairline); }
+  .sched-cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .sched-cal-head .m { font-size: 17px; font-weight: 660; font-family: var(--f-display); }
+  .sched-cal-head .m span { color: var(--muted); font-weight: 500; }
+  .sched-nav { display: flex; gap: 6px; }
+  .sched-nav button { width: 32px; height: 32px; border-radius: 9px; border: 1px solid var(--hairline); background: var(--surface); color: var(--ink); cursor: pointer; display: grid; place-items: center; }
+  .sched-nav button:hover:not(:disabled) { border-color: var(--hairline-strong); }
+  .sched-nav button:disabled { color: var(--hairline-strong); cursor: default; }
+  .sched-dows { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 6px; }
+  .sched-dows span { text-align: center; font-size: 11px; letter-spacing: .04em; color: var(--muted); text-transform: uppercase; padding: 4px 0; }
+  .sched-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .sched-day { aspect-ratio: 1; border: 0; border-radius: 11px; background: var(--surface-2); color: var(--ink); font-weight: 600; font-size: 14px; cursor: pointer; position: relative; font-variant-numeric: tabular-nums; transition: background .15s, color .15s; }
+  .sched-day:hover:not(:disabled) { background: var(--red-tint); color: var(--red-ink); }
+  .sched-day:disabled { background: transparent; color: var(--hairline-strong); cursor: default; }
+  .sched-day.today::after { content: ""; position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
+  .sched-day.selected { background: var(--red); color: #fff; }
+  .sched-day.selected.today::after { background: #fff; }
+  .sched-slots { padding: 22px 18px; display: flex; flex-direction: column; }
+  .sched-slots .sh { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .sched-slots .sh .d { font-size: 15px; font-weight: 640; font-family: var(--f-display); }
+  .sched-slots .sh .d span { color: var(--muted); font-weight: 500; }
+  .sched-fmt { display: flex; border: 1px solid var(--hairline); border-radius: 9px; overflow: hidden; }
+  .sched-fmt button { border: 0; background: var(--surface); color: var(--muted); font-size: 12px; font-weight: 600; padding: 5px 9px; cursor: pointer; }
+  .sched-fmt button.on { background: var(--ink); color: #fff; }
+  .sched-list { overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 2px; max-height: 340px; }
+  .slot { padding: 12px; border-radius: 10px; border: 1px solid var(--hairline); background: var(--surface); color: var(--ink); font-weight: 600; font-size: 14px; cursor: pointer; text-align: center; transition: border-color .15s, color .15s; }
+  .slot:hover, .slot.sel { border-color: var(--red); color: var(--red-ink); }
+  .sched-empty { color: var(--muted); font-size: 14px; text-align: center; margin: auto 0; padding: 30px 0; }
+  /* confirm + success */
+  .sched-confirm { padding: 22px 18px; display: none; flex-direction: column; gap: 12px; }
+  .sched-confirm.on { display: flex; }
+  .sched-confirm .pick { font-size: 13px; color: var(--red-ink); font-family: var(--f-mono); background: var(--red-tint); padding: 10px 12px; border-radius: 9px; }
+  .sched-confirm label { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .sched-confirm input { width: 100%; padding: 11px 12px; border-radius: 9px; border: 1px solid var(--hairline); background: var(--surface-2); font-size: 15px; color: var(--ink); }
+  .sched-confirm input:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px var(--red-tint); }
+  .sched-confirm .row { display: flex; gap: 8px; margin-top: 4px; }
+  .sched-confirm .row .btn { flex: 1; justify-content: center; }
+  .sched-success { grid-column: 1 / -1; padding: 54px 30px; text-align: center; display: none; }
+  body.sched-done .sched-success { display: block; }
+  body.sched-done .sched-info, body.sched-done .sched-cal, body.sched-done .sched-slots, body.sched-done .sched-confirm { display: none; }
+  .sched-success .tick { width: 60px; height: 60px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; margin: 0 auto 20px; }
+  .sched-success h3 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+  .sched-success p { color: var(--muted); margin: 0 auto 22px; max-width: 40ch; }
+  @media (max-width: 780px) {
+    .sched-card { grid-template-columns: 1fr; max-height: 92vh; }
+    .sched-info { border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .sched-cal { border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .sched-list { max-height: 220px; }
+  }
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="swirl" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"
       d="M12.0 11.4 L12.07 11.35 L12.15 11.31 L12.24 11.27 L12.34 11.25 L12.45 11.24 L12.56 11.25 L12.67 11.27 L12.79 11.31 L12.9 11.37 L13.01 11.44 L13.12 11.53 L13.21 11.64 L13.3 11.76 L13.37 11.9 L13.43 12.05 L13.47 12.21 L13.5 12.37 L13.5 12.55 L13.48 12.73 L13.44 12.92 L13.38 13.1 L13.3 13.28 L13.19 13.45 L13.06 13.62 L12.9 13.77 L12.73 13.91 L12.53 14.03 L12.32 14.13 L12.1 14.21 L11.86 14.26 L11.61 14.29 L11.35 14.29 L11.09 14.26 L10.83 14.2 L10.57 14.1 L10.32 13.98 L10.08 13.83 L9.85 13.65 L9.64 13.44 L9.45 13.2 L9.28 12.94 L9.14 12.66 L9.03 12.36 L8.96 12.04 L8.91 11.71 L8.91 11.37 L8.94 11.03 L9.01 10.68 L9.12 10.35 L9.27 10.01 L9.45 9.7 L9.68 9.4 L9.94 9.12 L10.23 8.87 L10.55 8.65 L10.9 8.46 L11.27 8.31 L11.66 8.19 L12.07 8.12 L12.49 8.1 L12.92 8.12 L13.35 8.19 L13.77 8.3 L14.18 8.46 L14.58 8.67 L14.96 8.93 L15.31 9.22 L15.64 9.56 L15.92 9.94 L16.17 10.35 L16.38 10.79 L16.54 11.25 L16.65 11.74 L16.7 12.24 L16.71 12.75 L16.65 13.26 L16.55 13.77 L16.38 14.27 L16.16 14.75 L15.89 15.21 L15.56 15.65 L15.18 16.05 L14.76 16.42 L14.3 16.74 L13.8 17.01 L13.27 17.22 L12.71 17.39 L12.14 17.49 L11.55 17.52 L10.95 17.5 L10.35 17.41 L9.77 17.25 L9.19 17.03 L8.64 16.75 L8.11 16.41 L7.62 16.01 L7.18 15.55 L6.78 15.04 L6.43 14.49 L6.15 13.9 L5.92 13.28 L5.77 12.63 L5.68 11.96 L5.66 11.28 L5.72 10.6 L5.86 9.92 L6.06 9.25 L6.34 8.61 L6.69 7.99 L7.11 7.41 L7.59 6.87 L8.13 6.38 L8.73 5.95 L9.37 5.59 L10.05 5.29 L10.77 5.07 L11.51 4.92 L12.27 4.85 L13.04 4.87 L13.81 4.96 L14.57 5.14 L15.31 5.41 L16.02 5.75 L16.7 6.17 L17.33 6.67 L17.92 7.23 L18.44 7.86 L18.89 8.54 L19.27 9.28 L19.57 10.06 L19.79 10.87 L19.93 11.7 L19.97 12.55 L19.92 13.41 L19.78 14.26 L19.54 15.1 L19.22 15.91 L18.81 16.69 L18.31 17.42 L17.73 18.11 L17.08 18.73 L16.37 19.28 L15.59 19.75 L14.76 20.14 L13.89 20.45 L12.98 20.65 L12.06 20.76 L11.11 20.78 L10.17 20.69 L9.24 20.49"/></symbol></svg>
-<header class="nav"><div class="wrap nav-inner"><a class="brand" href="index.html"><span class="mark"><svg viewBox="0 0 24 24"><use href="#swirl"/></svg></span>RD<b>Vate</b></a><nav class="nlinks"><a href="index.html">Home</a><a href="services.html">Services</a><a href="work.html" class="on">Work</a><a href="process.html">Process</a><a href="blog.html">Blog</a></nav><a class="btn btn-red" href="index.html#contact">Let's talk</a></div></header>
+<header class="nav"><div class="wrap nav-inner"><a class="brand" href="index.html"><span class="mark"><svg viewBox="0 0 24 24"><use href="#swirl"/></svg></span>RD<b>Vate</b></a><nav class="nlinks"><a href="index.html">Home</a><a href="services.html">Services</a><a href="work.html">Work</a><a href="process.html">Process</a><a href="blog.html">Blog</a></nav><a class="btn btn-red js-schedule" href="#">Book a call</a></div></header>
 <main>
-<section class="page-hero"><div class="wrap"><span class="eyebrow">Selected Work</span><h1>Results we’re proud of</h1><p>A look at brands we’ve helped rise above the noise — from identity and web to campaigns that move the numbers that matter.</p></div></section><section class="blk"><div class="wrap"><div class="work-grid"><article class="wcard"><div class="thumb" style="background:linear-gradient(135deg,#1c7a4a,#0d3323);"><span class="tag">Brand Identity</span><span class="nm">Lulu</span></div><div class="body"><h3>Brand Identity for Lulu Ethio Vegan</h3><p class="sub">A fresh, sustainable brand identity that boosted recognition and engagement.</p><div class="kpis"><div><div class="k">60%</div><div class="kl">Increase in brand recognition</div></div><div><div class="k">40%</div><div class="kl">Growth in social followers</div></div></div></div></article><article class="wcard"><div class="thumb" style="background:linear-gradient(135deg,#17402b,#0b2418);"><span class="tag">Website</span><span class="nm">Tesfaye&nbsp;Law</span></div><div class="body"><h3>Website for Tesfaye Desalegn Law Office</h3><p class="sub">A modern, credible online presence built to win client trust and inquiries.</p><div class="kpis"><div><div class="k">80%</div><div class="kl">Increase in client inquiries</div></div></div></div></article><article class="wcard"><div class="thumb" style="background:linear-gradient(135deg,#2f3a33,#151b17);"><span class="tag">Logo &amp; Brand</span><span class="nm">Eden</span></div><div class="body"><h3>Logo Design for Eden Photography &amp; Decor</h3><p class="sub">A modern logo and refresh that elevated the studio’s brand.</p><div class="kpis"><div><div class="k">50%</div><div class="kl">Increase in inquiries</div></div><div><div class="k">30%</div><div class="kl">Boost in website traffic</div></div></div></div></article><article class="wcard"><div class="thumb" style="background:linear-gradient(135deg,#1f7d8c,#0e4b57);"><span class="tag">Website</span><span class="nm">Sawla&nbsp;Tours</span></div><div class="body"><h3>Website for Sawla Tours</h3><p class="sub">Transforming travel experiences with a captivating digital presence.</p><div class="kpis"><div><div class="k">60%</div><div class="kl">Increase in website traffic</div></div><div><div class="k">45%</div><div class="kl">Rise in online inquiries</div></div></div></div></article></div></div></section><section class="cta-band"><div class="wrap"><div class="cta-card"><span class="eyebrow" style="justify-content:center;color:color-mix(in srgb,var(--red) 60%,#fff)!important;">Let's talk</span><h2 style="margin-top:14px;">Ready to build your growth engine?</h2><p>Book a free 30-minute audit — we'll show you exactly where the opportunities are.</p><a class="btn btn-red" href="book.html" style="justify-content:center;">Start your project <span class="arrow">&rarr;</span></a></div></div></section>
+<section class="book-hero"><div class="wrap"><div class="in"><span class="eyebrow" style="justify-content:center;">Let's build something great</span><h1>Start your project</h1><p>Book a free 30-minute strategy call. We'll dig into your goals, uncover growth opportunities, and map out exactly how RDVate can help you scale — no pitch, no pressure.</p><div class="book-cta"><button class="btn btn-red big js-schedule" type="button">Start your project <span class="arrow">&rarr;</span></button></div><div class="qmeta">30 min · Google Meet · Free</div></div></div></section><section><div class="wrap"><div class="expect"><div class="ecard"><div class="n">01</div><h3>Tell us your goals</h3><p>Pick a time and share a little about your brand and where you want to grow.</p></div><div class="ecard"><div class="n">02</div><h3>We dig in</h3><p>On the call we review your site, audience, and opportunities — live.</p></div><div class="ecard"><div class="n">03</div><h3>Walk away with a plan</h3><p>You leave with a clear roadmap you can use, with us or in-house.</p></div></div></div></section>
 </main>
-<footer><div class="wrap"><div class="foot-top"><div><a class="brand" href="index.html"><span class="mark"><svg viewBox="0 0 24 24"><use href="#swirl"/></svg></span>RD<b>Vate</b></a><p class="foot-tag">A digital marketing studio helping ambitious brands rise above the noise.</p></div><div class="foot-col"><h4>Explore</h4><a href="services.html">Services</a><a href="work.html">Work</a><a href="process.html">Process</a><a href="blog.html">Blog</a><a href="index.html#contact">Contact</a></div><div class="foot-col"><h4>Get in touch</h4><a href="mailto:hello@rdvate.com">hello@rdvate.com</a><a href="index.html#contact">Book a call</a><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div><div class="foot-bot"><span>© 2026 RDVate. All rights reserved.</span><span>Rise above the noise.</span></div></div></footer>
-<script>const nf=document.getElementById("nf");if(nf)nf.addEventListener("submit",e=>{e.preventDefault();const b=e.target.querySelector("button");b.textContent="Subscribed ✓";b.disabled=true;});</script>
+<footer><div class="wrap foot-bot"><span>© 2026 RDVate. All rights reserved.</span><a href="index.html">← Back to home</a></div></footer>
+<div class="sched-overlay" id="schedOverlay" role="dialog" aria-modal="true" aria-label="Book a strategy call">
+  <div class="sched-card">
+    <button class="sched-close" id="schedClose" aria-label="Close"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="sched-info">
+      <span class="brand-mark" style="display:inline-grid;"><svg class="swirl"><use href="#swirl"/></svg></span>
+      <div class="si-eyebrow">RDVate · Strategy Call</div>
+      <h3>Book Your Strategy Call</h3>
+      <p>A free 30-minute call to dig into your goals, uncover growth opportunities, and see how RDVate can help you scale. No pitch, no pressure.</p>
+      <div class="sched-meta">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>30 min</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3z"/></svg>Google Meet</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span id="schedTz">Your local time</span></div>
+      </div>
+    </div>
+
+    <div class="sched-cal">
+      <div class="sched-cal-head">
+        <div class="m" id="schedMonth"></div>
+        <div class="sched-nav">
+          <button id="schedPrev" aria-label="Previous month"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg></button>
+          <button id="schedNext" aria-label="Next month"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="sched-dows"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+      <div class="sched-grid" id="schedGrid"></div>
+    </div>
+
+    <div class="sched-slots" id="schedSlotsPane">
+      <div class="sh">
+        <div class="d" id="schedDayLabel">Pick a date</div>
+        <div class="sched-fmt"><button data-fmt="12" class="on">12h</button><button data-fmt="24">24h</button></div>
+      </div>
+      <div class="sched-list" id="schedList"><div class="sched-empty">Select a day to see available times.</div></div>
+    </div>
+
+    <div class="sched-confirm" id="schedConfirm">
+      <div class="pick" id="schedPick"></div>
+      <div><label for="schedName">Name</label><input id="schedName" type="text" placeholder="Your name" autocomplete="name"></div>
+      <div><label for="schedEmail">Email</label><input id="schedEmail" type="email" placeholder="name@email.com" autocomplete="email"></div>
+      <div class="row">
+        <button class="btn btn-ghost" id="schedBack" type="button">Back</button>
+        <button class="btn btn-red" id="schedBook" type="button">Schedule call</button>
+      </div>
+    </div>
+
+    <div class="sched-success">
+      <div class="tick"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h3>You're all set!</h3>
+      <p id="schedSuccessMsg">We've opened an email with your details — send it and we'll confirm your call with a calendar invite.</p>
+      <button class="btn btn-red" id="schedDoneBtn" type="button" style="margin:0 auto;">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// scheduling modal (self-contained calendar; opens from "Let's Connect")
+  (function () {
+    const overlay = document.getElementById('schedOverlay');
+    if (!overlay) return;
+    const $ = id => document.getElementById(id);
+    const grid = $('schedGrid'), monthEl = $('schedMonth'), prevBtn = $('schedPrev'), nextBtn = $('schedNext');
+    const list = $('schedList'), dayLabel = $('schedDayLabel'), slotsPane = $('schedSlotsPane');
+    const confirmPane = $('schedConfirm'), pick = $('schedPick'), nameI = $('schedName'), emailI = $('schedEmail');
+    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const DOWS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    let view = new Date(today.getFullYear(), today.getMonth(), 1);
+    let selDate = null, selSlot = null, fmt = 12;
+    try { $('schedTz').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone.replace(/_/g, ' '); } catch (e) {}
+
+    const sameMonth = (a, b) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth();
+    function fmtTime(h, m) {
+      if (fmt === 24) return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+      const ap = h < 12 ? 'am' : 'pm'; let hh = h % 12; if (hh === 0) hh = 12;
+      return hh + ':' + String(m).padStart(2, '0') + ap;
+    }
+    function renderCal() {
+      monthEl.innerHTML = MONTHS[view.getMonth()] + ' <span>' + view.getFullYear() + '</span>';
+      prevBtn.disabled = sameMonth(view, today);
+      grid.innerHTML = '';
+      const first = new Date(view.getFullYear(), view.getMonth(), 1).getDay();
+      const days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+      for (let i = 0; i < first; i++) grid.appendChild(document.createElement('span'));
+      for (let d = 1; d <= days; d++) {
+        const date = new Date(view.getFullYear(), view.getMonth(), d);
+        const b = document.createElement('button');
+        b.className = 'sched-day'; b.textContent = d;
+        const dow = date.getDay();
+        if (date.getTime() === today.getTime()) b.classList.add('today');
+        if (date < today || dow === 0 || dow === 6) b.disabled = true;
+        else b.addEventListener('click', () => selectDate(date, b));
+        if (selDate && date.getTime() === selDate.getTime()) b.classList.add('selected');
+        grid.appendChild(b);
+      }
+    }
+    function selectDate(date, btn) {
+      selDate = date;
+      grid.querySelectorAll('.sched-day').forEach(x => x.classList.remove('selected'));
+      btn.classList.add('selected');
+      dayLabel.innerHTML = DOWS[date.getDay()].slice(0, 3) + ' <span>' + MONTHS[date.getMonth()].slice(0, 3) + ' ' + date.getDate() + '</span>';
+      renderSlots();
+    }
+    function renderSlots() {
+      list.innerHTML = '';
+      for (let h = 9; h <= 16; h++) for (const m of [0, 30]) {
+        if (h === 16 && m === 30) continue;
+        const s = document.createElement('button'); s.className = 'slot'; s.textContent = fmtTime(h, m);
+        s.addEventListener('click', () => { selSlot = [h, m]; showConfirm(); });
+        list.appendChild(s);
+      }
+    }
+    function showConfirm() {
+      pick.textContent = DOWS[selDate.getDay()] + ', ' + MONTHS[selDate.getMonth()] + ' ' + selDate.getDate() + ' · ' + fmtTime(selSlot[0], selSlot[1]);
+      slotsPane.style.display = 'none'; confirmPane.classList.add('on');
+    }
+    $('schedBack').addEventListener('click', () => { confirmPane.classList.remove('on'); slotsPane.style.display = ''; });
+    document.querySelectorAll('.sched-fmt button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('.sched-fmt button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on'); fmt = +b.dataset.fmt; if (selDate) renderSlots();
+    }));
+    prevBtn.addEventListener('click', () => { if (prevBtn.disabled) return; view = new Date(view.getFullYear(), view.getMonth() - 1, 1); renderCal(); });
+    nextBtn.addEventListener('click', () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderCal(); });
+
+    $('schedBook').addEventListener('click', () => {
+      const name = nameI.value.trim(), email = emailI.value.trim();
+      if (!name) { nameI.focus(); return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { emailI.focus(); return; }
+      const when = DOWS[selDate.getDay()] + ', ' + MONTHS[selDate.getMonth()] + ' ' + selDate.getDate() + ', ' + selDate.getFullYear() + ' at ' + fmtTime(selSlot[0], selSlot[1]);
+      const body = "Hi RDVate,%0D%0A%0D%0AI'd like to book a strategy call.%0D%0A%0D%0AName: " + encodeURIComponent(name) + '%0D%0AEmail: ' + encodeURIComponent(email) + '%0D%0APreferred time: ' + encodeURIComponent(when) + '%0D%0A%0D%0AThanks!';
+      $('schedSuccessMsg').textContent = "We've opened an email with your " + fmtTime(selSlot[0], selSlot[1]) + ' request for ' + MONTHS[selDate.getMonth()] + ' ' + selDate.getDate() + " — send it and we'll confirm with a calendar invite to " + email + '.';
+      window.location.href = 'mailto:hello@rdvate.com?subject=' + encodeURIComponent('Strategy call — ' + when) + '&body=' + body;
+      document.body.classList.add('sched-done');
+    });
+
+    function open() {
+      view = new Date(today.getFullYear(), today.getMonth(), 1);
+      selDate = null; selSlot = null;
+      confirmPane.classList.remove('on'); slotsPane.style.display = '';
+      dayLabel.textContent = 'Pick a date';
+      list.innerHTML = '<div class="sched-empty">Select a day to see available times.</div>';
+      nameI.value = ''; emailI.value = '';
+      document.body.classList.remove('sched-done');
+      renderCal();
+      document.body.classList.add('sched-open'); document.body.style.overflow = 'hidden';
+    }
+    function close() { document.body.classList.remove('sched-open'); document.body.style.overflow = ''; }
+    document.querySelectorAll('.js-schedule').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); open(); }));
+    $('schedClose').addEventListener('click', close);
+    $('schedDoneBtn').addEventListener('click', close);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.body.classList.contains('sched-open')) close(); });
+  })();
+</script>
 </body>
 </html>
