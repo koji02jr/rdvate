@@ -690,6 +690,76 @@
   .has-glass-cursor label, .has-glass-cursor .liquid-btn { cursor: none; }
   .has-glass-cursor input, .has-glass-cursor textarea, .has-glass-cursor select { cursor: text; }
   @media (hover: none), (pointer: coarse) { .glass-cursor { display: none; } }
+
+  /* ---------- SCHEDULING MODAL ---------- */
+  .sched-overlay { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px;
+    background: color-mix(in srgb, var(--ink) 34%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; }
+  body.sched-open .sched-overlay { opacity: 1; visibility: visible; }
+  .sched-card { position: relative; width: min(940px, 100%); max-height: 90vh; overflow: auto; background: var(--surface);
+    border-radius: 24px; box-shadow: 0 40px 90px -30px rgba(0,0,0,.55); display: grid;
+    grid-template-columns: 258px 1fr 230px; transform: scale(.96) translateY(12px); transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+  body.sched-open .sched-card { transform: none; }
+  .sched-close { position: absolute; top: 16px; right: 16px; z-index: 3; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--hairline); background: var(--surface); color: var(--muted); cursor: pointer; display: grid; place-items: center; }
+  .sched-close:hover { color: var(--ink); border-color: var(--hairline-strong); }
+  .sched-info { padding: 26px 24px; border-right: 1px solid var(--hairline); }
+  .sched-info .brand-mark { margin-bottom: 18px; }
+  .sched-info .si-eyebrow { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; color: var(--muted); }
+  .sched-info h3 { font-size: 22px; font-weight: 680; margin: 6px 0 16px; letter-spacing: -.01em; }
+  .sched-info p { font-size: 14px; color: var(--muted); line-height: 1.55; margin: 0 0 20px; }
+  .sched-meta { display: flex; flex-direction: column; gap: 11px; font-size: 14px; color: var(--ink-soft); }
+  .sched-meta div { display: flex; align-items: center; gap: 9px; }
+  .sched-meta svg { width: 17px; height: 17px; color: var(--muted); flex: none; }
+  .sched-cal { padding: 24px; border-right: 1px solid var(--hairline); }
+  .sched-cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .sched-cal-head .m { font-size: 17px; font-weight: 660; font-family: var(--f-display); }
+  .sched-cal-head .m span { color: var(--muted); font-weight: 500; }
+  .sched-nav { display: flex; gap: 6px; }
+  .sched-nav button { width: 32px; height: 32px; border-radius: 9px; border: 1px solid var(--hairline); background: var(--surface); color: var(--ink); cursor: pointer; display: grid; place-items: center; }
+  .sched-nav button:hover:not(:disabled) { border-color: var(--hairline-strong); }
+  .sched-nav button:disabled { color: var(--hairline-strong); cursor: default; }
+  .sched-dows { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 6px; }
+  .sched-dows span { text-align: center; font-size: 11px; letter-spacing: .04em; color: var(--muted); text-transform: uppercase; padding: 4px 0; }
+  .sched-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .sched-day { aspect-ratio: 1; border: 0; border-radius: 11px; background: var(--surface-2); color: var(--ink); font-weight: 600; font-size: 14px; cursor: pointer; position: relative; font-variant-numeric: tabular-nums; transition: background .15s, color .15s; }
+  .sched-day:hover:not(:disabled) { background: var(--red-tint); color: var(--red-ink); }
+  .sched-day:disabled { background: transparent; color: var(--hairline-strong); cursor: default; }
+  .sched-day.today::after { content: ""; position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
+  .sched-day.selected { background: var(--red); color: #fff; }
+  .sched-day.selected.today::after { background: #fff; }
+  .sched-slots { padding: 22px 18px; display: flex; flex-direction: column; }
+  .sched-slots .sh { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .sched-slots .sh .d { font-size: 15px; font-weight: 640; font-family: var(--f-display); }
+  .sched-slots .sh .d span { color: var(--muted); font-weight: 500; }
+  .sched-fmt { display: flex; border: 1px solid var(--hairline); border-radius: 9px; overflow: hidden; }
+  .sched-fmt button { border: 0; background: var(--surface); color: var(--muted); font-size: 12px; font-weight: 600; padding: 5px 9px; cursor: pointer; }
+  .sched-fmt button.on { background: var(--ink); color: #fff; }
+  .sched-list { overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 2px; max-height: 340px; }
+  .slot { padding: 12px; border-radius: 10px; border: 1px solid var(--hairline); background: var(--surface); color: var(--ink); font-weight: 600; font-size: 14px; cursor: pointer; text-align: center; transition: border-color .15s, color .15s; }
+  .slot:hover, .slot.sel { border-color: var(--red); color: var(--red-ink); }
+  .sched-empty { color: var(--muted); font-size: 14px; text-align: center; margin: auto 0; padding: 30px 0; }
+  /* confirm + success */
+  .sched-confirm { padding: 22px 18px; display: none; flex-direction: column; gap: 12px; }
+  .sched-confirm.on { display: flex; }
+  .sched-confirm .pick { font-size: 13px; color: var(--red-ink); font-family: var(--f-mono); background: var(--red-tint); padding: 10px 12px; border-radius: 9px; }
+  .sched-confirm label { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .sched-confirm input { width: 100%; padding: 11px 12px; border-radius: 9px; border: 1px solid var(--hairline); background: var(--surface-2); font-size: 15px; color: var(--ink); }
+  .sched-confirm input:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px var(--red-tint); }
+  .sched-confirm .row { display: flex; gap: 8px; margin-top: 4px; }
+  .sched-confirm .row .btn { flex: 1; justify-content: center; }
+  .sched-success { grid-column: 1 / -1; padding: 54px 30px; text-align: center; display: none; }
+  body.sched-done .sched-success { display: block; }
+  body.sched-done .sched-info, body.sched-done .sched-cal, body.sched-done .sched-slots, body.sched-done .sched-confirm { display: none; }
+  .sched-success .tick { width: 60px; height: 60px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; margin: 0 auto 20px; }
+  .sched-success h3 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+  .sched-success p { color: var(--muted); margin: 0 auto 22px; max-width: 40ch; }
+  @media (max-width: 780px) {
+    .sched-card { grid-template-columns: 1fr; max-height: 92vh; }
+    .sched-info { border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .sched-cal { border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .sched-list { max-height: 220px; }
+  }
 </style>
 </head>
 <body>
@@ -742,7 +812,7 @@
       <span class="mo-item"><a href="#contact">Contact</a></span>
     </nav>
     <div class="mo-foot">
-      <a class="btn btn-red" href="#contact">Schedule a free consultation <span class="arrow">&rarr;</span></a>
+      <a class="btn btn-red js-schedule" href="#contact">Schedule a free consultation <span class="arrow">&rarr;</span></a>
       <div class="mo-meta">
         <a href="mailto:hello@rdvate.com" class="mo-mail">hello@rdvate.com</a>
         <div class="mo-socials">
@@ -767,7 +837,7 @@
         <h1 class="reveal" style="margin-top:18px;">Rise Above the <span class="noise-wrap"><span class="hl">Noise</span><span class="peel" aria-hidden="true"></span></span><br>with <span class="rd"><svg class="swirl"><use href="#swirl"/></svg><span class="rdw">RD<span class="ev">Vate</span>.</span></span></h1>
         <p class="lede reveal">At RDVate, we craft bold, innovative strategies that help your brand rise above the noise and truly connect with your audience.</p>
         <div class="hero-cta reveal">
-          <a class="liquid-btn" href="#contact">
+          <a class="liquid-btn js-schedule" href="#contact">
             <span class="lb-bg" aria-hidden="true"></span>
             <span class="lb-distort" aria-hidden="true"></span>
             <span class="lb-shine" aria-hidden="true"></span>
@@ -1071,6 +1141,61 @@
   </div>
 </footer>
 
+<!-- scheduling modal -->
+<div class="sched-overlay" id="schedOverlay" role="dialog" aria-modal="true" aria-label="Book a strategy call">
+  <div class="sched-card">
+    <button class="sched-close" id="schedClose" aria-label="Close"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="sched-info">
+      <span class="brand-mark" style="display:inline-grid;"><svg class="swirl"><use href="#swirl"/></svg></span>
+      <div class="si-eyebrow">RDVate · Strategy Call</div>
+      <h3>Book Your Strategy Call</h3>
+      <p>A free 30-minute call to dig into your goals, uncover growth opportunities, and see how RDVate can help you scale. No pitch, no pressure.</p>
+      <div class="sched-meta">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>30 min</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3z"/></svg>Google Meet</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><span id="schedTz">Your local time</span></div>
+      </div>
+    </div>
+
+    <div class="sched-cal">
+      <div class="sched-cal-head">
+        <div class="m" id="schedMonth"></div>
+        <div class="sched-nav">
+          <button id="schedPrev" aria-label="Previous month"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg></button>
+          <button id="schedNext" aria-label="Next month"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="sched-dows"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+      <div class="sched-grid" id="schedGrid"></div>
+    </div>
+
+    <div class="sched-slots" id="schedSlotsPane">
+      <div class="sh">
+        <div class="d" id="schedDayLabel">Pick a date</div>
+        <div class="sched-fmt"><button data-fmt="12" class="on">12h</button><button data-fmt="24">24h</button></div>
+      </div>
+      <div class="sched-list" id="schedList"><div class="sched-empty">Select a day to see available times.</div></div>
+    </div>
+
+    <div class="sched-confirm" id="schedConfirm">
+      <div class="pick" id="schedPick"></div>
+      <div><label for="schedName">Name</label><input id="schedName" type="text" placeholder="Your name" autocomplete="name"></div>
+      <div><label for="schedEmail">Email</label><input id="schedEmail" type="email" placeholder="name@email.com" autocomplete="email"></div>
+      <div class="row">
+        <button class="btn btn-ghost" id="schedBack" type="button">Back</button>
+        <button class="btn btn-red" id="schedBook" type="button">Schedule call</button>
+      </div>
+    </div>
+
+    <div class="sched-success">
+      <div class="tick"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h3>You're all set!</h3>
+      <p id="schedSuccessMsg">We've opened an email with your details — send it and we'll confirm your call with a calendar invite.</p>
+      <button class="btn btn-red" id="schedDoneBtn" type="button" style="margin:0 auto;">Done</button>
+    </div>
+  </div>
+</div>
+
 <div class="glass-cursor" id="glassCursor" aria-hidden="true"><span class="gc-ring"></span></div>
 <div class="glass-dot" id="glassDot" aria-hidden="true"></div>
 
@@ -1244,6 +1369,105 @@
         dots.forEach((d, i) => d.classList.toggle('active', i === best));
       });
     }, { passive: true });
+  })();
+
+  // scheduling modal (self-contained calendar; opens from "Let's Connect")
+  (function () {
+    const overlay = document.getElementById('schedOverlay');
+    if (!overlay) return;
+    const $ = id => document.getElementById(id);
+    const grid = $('schedGrid'), monthEl = $('schedMonth'), prevBtn = $('schedPrev'), nextBtn = $('schedNext');
+    const list = $('schedList'), dayLabel = $('schedDayLabel'), slotsPane = $('schedSlotsPane');
+    const confirmPane = $('schedConfirm'), pick = $('schedPick'), nameI = $('schedName'), emailI = $('schedEmail');
+    const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const DOWS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    let view = new Date(today.getFullYear(), today.getMonth(), 1);
+    let selDate = null, selSlot = null, fmt = 12;
+    try { $('schedTz').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone.replace(/_/g, ' '); } catch (e) {}
+
+    const sameMonth = (a, b) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth();
+    function fmtTime(h, m) {
+      if (fmt === 24) return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+      const ap = h < 12 ? 'am' : 'pm'; let hh = h % 12; if (hh === 0) hh = 12;
+      return hh + ':' + String(m).padStart(2, '0') + ap;
+    }
+    function renderCal() {
+      monthEl.innerHTML = MONTHS[view.getMonth()] + ' <span>' + view.getFullYear() + '</span>';
+      prevBtn.disabled = sameMonth(view, today);
+      grid.innerHTML = '';
+      const first = new Date(view.getFullYear(), view.getMonth(), 1).getDay();
+      const days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+      for (let i = 0; i < first; i++) grid.appendChild(document.createElement('span'));
+      for (let d = 1; d <= days; d++) {
+        const date = new Date(view.getFullYear(), view.getMonth(), d);
+        const b = document.createElement('button');
+        b.className = 'sched-day'; b.textContent = d;
+        const dow = date.getDay();
+        if (date.getTime() === today.getTime()) b.classList.add('today');
+        if (date < today || dow === 0 || dow === 6) b.disabled = true;
+        else b.addEventListener('click', () => selectDate(date, b));
+        if (selDate && date.getTime() === selDate.getTime()) b.classList.add('selected');
+        grid.appendChild(b);
+      }
+    }
+    function selectDate(date, btn) {
+      selDate = date;
+      grid.querySelectorAll('.sched-day').forEach(x => x.classList.remove('selected'));
+      btn.classList.add('selected');
+      dayLabel.innerHTML = DOWS[date.getDay()].slice(0, 3) + ' <span>' + MONTHS[date.getMonth()].slice(0, 3) + ' ' + date.getDate() + '</span>';
+      renderSlots();
+    }
+    function renderSlots() {
+      list.innerHTML = '';
+      for (let h = 9; h <= 16; h++) for (const m of [0, 30]) {
+        if (h === 16 && m === 30) continue;
+        const s = document.createElement('button'); s.className = 'slot'; s.textContent = fmtTime(h, m);
+        s.addEventListener('click', () => { selSlot = [h, m]; showConfirm(); });
+        list.appendChild(s);
+      }
+    }
+    function showConfirm() {
+      pick.textContent = DOWS[selDate.getDay()] + ', ' + MONTHS[selDate.getMonth()] + ' ' + selDate.getDate() + ' · ' + fmtTime(selSlot[0], selSlot[1]);
+      slotsPane.style.display = 'none'; confirmPane.classList.add('on');
+    }
+    $('schedBack').addEventListener('click', () => { confirmPane.classList.remove('on'); slotsPane.style.display = ''; });
+    document.querySelectorAll('.sched-fmt button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('.sched-fmt button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on'); fmt = +b.dataset.fmt; if (selDate) renderSlots();
+    }));
+    prevBtn.addEventListener('click', () => { if (prevBtn.disabled) return; view = new Date(view.getFullYear(), view.getMonth() - 1, 1); renderCal(); });
+    nextBtn.addEventListener('click', () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderCal(); });
+
+    $('schedBook').addEventListener('click', () => {
+      const name = nameI.value.trim(), email = emailI.value.trim();
+      if (!name) { nameI.focus(); return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { emailI.focus(); return; }
+      const when = DOWS[selDate.getDay()] + ', ' + MONTHS[selDate.getMonth()] + ' ' + selDate.getDate() + ', ' + selDate.getFullYear() + ' at ' + fmtTime(selSlot[0], selSlot[1]);
+      const body = "Hi RDVate,%0D%0A%0D%0AI'd like to book a strategy call.%0D%0A%0D%0AName: " + encodeURIComponent(name) + '%0D%0AEmail: ' + encodeURIComponent(email) + '%0D%0APreferred time: ' + encodeURIComponent(when) + '%0D%0A%0D%0AThanks!';
+      $('schedSuccessMsg').textContent = "We've opened an email with your " + fmtTime(selSlot[0], selSlot[1]) + ' request for ' + MONTHS[selDate.getMonth()] + ' ' + selDate.getDate() + " — send it and we'll confirm with a calendar invite to " + email + '.';
+      window.location.href = 'mailto:hello@rdvate.com?subject=' + encodeURIComponent('Strategy call — ' + when) + '&body=' + body;
+      document.body.classList.add('sched-done');
+    });
+
+    function open() {
+      view = new Date(today.getFullYear(), today.getMonth(), 1);
+      selDate = null; selSlot = null;
+      confirmPane.classList.remove('on'); slotsPane.style.display = '';
+      dayLabel.textContent = 'Pick a date';
+      list.innerHTML = '<div class="sched-empty">Select a day to see available times.</div>';
+      nameI.value = ''; emailI.value = '';
+      document.body.classList.remove('sched-done');
+      renderCal();
+      document.body.classList.add('sched-open'); document.body.style.overflow = 'hidden';
+    }
+    function close() { document.body.classList.remove('sched-open'); document.body.style.overflow = ''; }
+    document.querySelectorAll('.js-schedule').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); open(); }));
+    $('schedClose').addEventListener('click', close);
+    $('schedDoneBtn').addEventListener('click', close);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.body.classList.contains('sched-open')) close(); });
   })();
 
   // contact form -> mailto (works without a backend for now)
