@@ -372,6 +372,39 @@
   .svc .more .arrow { transition: transform .2s; }
   .svc:hover .more .arrow { transform: translateX(3px); }
 
+  /* ---------- SERVICES CAROUSEL (image cards) ---------- */
+  .svc-carousel { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 6px 2px 4px; scrollbar-width: none; scroll-behavior: smooth; }
+  .svc-carousel::-webkit-scrollbar { display: none; }
+  .svc-slide {
+    flex: 0 0 clamp(250px, 31%, 330px); scroll-snap-align: center; position: relative;
+    aspect-ratio: 3 / 4; border-radius: 22px; overflow: hidden;
+    display: flex; align-items: flex-end; padding: 26px; color: #fff; text-decoration: none;
+    box-shadow: 0 22px 44px -24px rgba(0,0,0,.45); transition: transform .3s cubic-bezier(.2,.7,.2,1);
+  }
+  .svc-slide::before { content: ""; position: absolute; inset: 0; z-index: 0; background: var(--img); }
+  .svc-slide::after { content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to top, rgba(8,20,14,.9) 0%, rgba(8,20,14,.4) 42%, rgba(8,20,14,.05) 72%); }
+  .svc-slide > .sc-body { position: relative; z-index: 2; }
+  .svc-slide:hover { transform: translateY(-5px); }
+  .svc-slide .sc-ic { width: 40px; height: 40px; border-radius: 11px; background: rgba(255,255,255,.16); backdrop-filter: blur(6px); display: grid; place-items: center; color: #fff; margin-bottom: 14px; }
+  .svc-slide .sc-ic svg { width: 21px; height: 21px; }
+  .svc-slide h3 { font-size: 22px; font-weight: 680; letter-spacing: -.01em; margin: 0 0 8px; text-shadow: 0 2px 12px rgba(0,0,0,.3); }
+  .svc-slide p { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.86); margin: 0; }
+
+  .carousel-ctrl { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 30px; }
+  .carousel-dots { display: flex; gap: 8px; }
+  .carousel-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hairline-strong); border: 0; padding: 0; cursor: pointer; transition: width .25s, background .25s; }
+  .carousel-dots .dot.active { width: 24px; border-radius: 5px; background: var(--red); }
+  .carousel-arrows { display: flex; gap: 10px; }
+  .c-arrow { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; transition: transform .15s, background .2s, border-color .2s, color .2s; }
+  .c-arrow svg { width: 20px; height: 20px; }
+  .c-arrow.prev { background: var(--surface); border: 1px solid var(--hairline-strong); color: var(--ink); }
+  .c-arrow.prev:hover { border-color: var(--ink); }
+  .c-arrow.next { background: var(--red); border: 0; color: #fff; }
+  .c-arrow.next:hover { background: var(--red-ink); }
+  .c-arrow:active { transform: scale(.92); }
+  @media (max-width: 640px) { .svc-slide { flex-basis: 78%; } }
+
   /* ---------- BENTO (cursor spotlight) ---------- */
   .bento-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
@@ -735,30 +768,41 @@
         </div>
         <a class="btn btn-red reveal" href="#contact">View all services <span class="arrow">→</span></a>
       </div>
-      <div class="svc-grid">
-        <div class="svc reveal">
-          <div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 3 8.5 12 14l9-5.5L12 3z"/><path d="M3 15.5 12 21l9-5.5"/></svg></div>
-          <h3>Brand Development</h3>
-          <p>We'll help you create a cohesive identity with a custom logo, visual branding, and strategic positioning that connects with your audience and sets you apart.</p>
-          <a class="more" href="#contact">Learn more <span class="arrow">→</span></a>
-        </div>
-        <div class="svc reveal">
-          <div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 5-7"/></svg></div>
-          <h3>Digital Advertising &amp; Marketing</h3>
-          <p>Let us drive results with social media campaigns, targeted ads, SEO, and content strategies designed to attract, engage, and convert customers.</p>
-          <a class="more" href="#contact">Learn more <span class="arrow">→</span></a>
-        </div>
-        <div class="svc reveal">
-          <div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></div>
-          <h3>Web Design &amp; Development</h3>
-          <p>We'll build a high-performing, user-friendly website optimized for mobile and search engines, delivering a seamless experience from start to finish.</p>
-          <a class="more" href="#contact">Learn more <span class="arrow">→</span></a>
-        </div>
-        <div class="svc reveal">
-          <div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m8 14 3-3 2 2 3-4"/></svg></div>
-          <h3>Marketing Strategy &amp; Consulting</h3>
-          <p>Work with us to develop tailored strategies, uncover audience insights, and analyze competitors to scale your marketing and achieve measurable growth.</p>
-          <a class="more" href="#contact">Learn more <span class="arrow">→</span></a>
+      <div class="svc-carousel reveal" id="svcCarousel">
+        <a class="svc-slide" href="#contact" style="--img:linear-gradient(160deg,#2a6a48,#0d3323 70%);">
+          <div class="sc-body">
+            <div class="sc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 3 8.5 12 14l9-5.5L12 3z"/><path d="M3 15.5 12 21l9-5.5"/></svg></div>
+            <h3>Brand Development</h3>
+            <p>A cohesive identity — custom logo, visual branding, and positioning that sets you apart.</p>
+          </div>
+        </a>
+        <a class="svc-slide" href="#contact" style="--img:linear-gradient(160deg,#33507e,#141d38 70%);">
+          <div class="sc-body">
+            <div class="sc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18"/><path d="m7 14 3-4 3 3 5-7"/></svg></div>
+            <h3>Digital Advertising &amp; Marketing</h3>
+            <p>Social campaigns, targeted ads, SEO, and content built to attract, engage, and convert.</p>
+          </div>
+        </a>
+        <a class="svc-slide" href="#contact" style="--img:linear-gradient(160deg,#6a4a2f,#2b1c12 70%);">
+          <div class="sc-body">
+            <div class="sc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></div>
+            <h3>Web Design &amp; Development</h3>
+            <p>Fast, mobile-first, SEO-ready sites — a seamless experience from first click to convert.</p>
+          </div>
+        </a>
+        <a class="svc-slide" href="#contact" style="--img:linear-gradient(160deg,#2f6a63,#123531 70%);">
+          <div class="sc-body">
+            <div class="sc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="m8 14 3-3 2 2 3-4"/></svg></div>
+            <h3>Marketing Strategy &amp; Consulting</h3>
+            <p>Tailored strategy, audience insight, and competitor analysis for measurable growth.</p>
+          </div>
+        </a>
+      </div>
+      <div class="carousel-ctrl reveal">
+        <div class="carousel-dots" id="svcDots" role="tablist" aria-label="Services"></div>
+        <div class="carousel-arrows">
+          <button class="c-arrow prev" id="svcPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg></button>
+          <button class="c-arrow next" id="svcNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
         </div>
       </div>
     </div>
@@ -1164,6 +1208,41 @@
       dot.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
       requestAnimationFrame(loop);
     })();
+  })();
+
+  // services image-card carousel
+  (function () {
+    const track = document.getElementById('svcCarousel');
+    const dotsWrap = document.getElementById('svcDots');
+    const prev = document.getElementById('svcPrev');
+    const next = document.getElementById('svcNext');
+    if (!track || !dotsWrap) return;
+    const slides = [...track.querySelectorAll('.svc-slide')];
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.className = 'dot' + (i === 0 ? ' active' : '');
+      b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      b.addEventListener('click', () => slides[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }));
+      dotsWrap.appendChild(b);
+    });
+    const dots = [...dotsWrap.children];
+    const step = () => (slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : slides[0].offsetWidth);
+    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    let raf;
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const center = track.scrollLeft + track.clientWidth / 2;
+        let best = 0, bestD = Infinity;
+        slides.forEach((s, i) => {
+          const c = s.offsetLeft + s.offsetWidth / 2;
+          const d = Math.abs(c - center);
+          if (d < bestD) { bestD = d; best = i; }
+        });
+        dots.forEach((d, i) => d.classList.toggle('active', i === best));
+      });
+    }, { passive: true });
   })();
 
   // contact form -> mailto (works without a backend for now)
