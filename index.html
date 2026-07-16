@@ -323,24 +323,21 @@
     display: inline-block; position: relative; color: #fff; background: var(--red);
     padding: 0 .2em; border-radius: 10px;
     box-shadow: 0 10px 24px -12px rgba(0,0,0,.4);
-    transition: box-shadow .55s;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+    transition: clip-path .55s cubic-bezier(.22,.61,.36,1), box-shadow .55s;
     transform-origin: 32% 84%;
     animation: stickOn 1.05s cubic-bezier(.34,1.28,.5,1) .35s backwards;
-    will-change: transform;
+    will-change: clip-path, transform;
   }
   .hero h1 .noise-wrap:hover .hl,
   .hero h1 .noise-wrap.peeled .hl {
+    clip-path: polygon(0 0, 100% 0, 100% 68%, 68% 100%, 0 100%);
     box-shadow: 0 24px 44px -14px rgba(0,0,0,.5);
   }
   .hero h1 .peel {
+    display: none;
     position: absolute; right: -1px; bottom: -1px; width: 12%; aspect-ratio: 1 / 1; pointer-events: none;
-    background: linear-gradient(135deg,
-      color-mix(in srgb, var(--red) 62%, #000) 0%,
-      var(--red) 46%,
-      color-mix(in srgb, var(--red) 55%, #fff) 100%);
     clip-path: polygon(100% 0, 0 100%, 100% 100%);
-    border-bottom-right-radius: 10px;
-    box-shadow: -4px -4px 12px rgba(0,0,0,.32);
     transform-origin: 100% 100%; transform: scale(.85);
     transition: transform .55s cubic-bezier(.22,.61,.36,1);
     animation: peelStick 1.05s cubic-bezier(.34,1.28,.5,1) .35s backwards;
