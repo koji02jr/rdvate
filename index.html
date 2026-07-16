@@ -339,10 +339,10 @@
     position: absolute; right: 0; bottom: 0; width: 32%; aspect-ratio: 1 / 1; pointer-events: none;
     clip-path: polygon(0 0, 100% 0, 0 100%);           /* upper-left triangle; hypotenuse = the fold */
     background: linear-gradient(135deg,
-      color-mix(in srgb, var(--red) 68%, #05311c) 0%,   /* curled tip, in shadow */
-      color-mix(in srgb, var(--red) 44%, #ffffff) 42%,
-      color-mix(in srgb, var(--red) 78%, #ffffff) 72%,  /* bright bend catching light */
-      color-mix(in srgb, var(--red) 30%, #ffffff) 100%);
+      #0c5230 0%,     /* curled tip, in shadow */
+      #1f7d50 40%,
+      #3fa06e 68%,    /* bend catching light */
+      #63b98d 100%);  /* lighter green near the fold — still clearly green, not white */
     border-top-left-radius: 4px;
     filter: drop-shadow(-5px -4px 5px rgba(0,0,0,.34));
     transform-origin: 100% 100%; transform: scale(.3);
