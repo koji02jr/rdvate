@@ -243,7 +243,7 @@
   @media (max-width: 560px) { .hide-sm { display: none; } }
 
   /* ---------- HERO ---------- */
-  .hero { position: relative; text-align: center; padding: clamp(56px, 9vw, 104px) 0 0; overflow: hidden; }
+  .hero { position: relative; padding: clamp(36px, 5vw, 72px) 0 0; overflow: hidden; }
   .hero .glow { position:absolute; top:-20%; left:50%; transform:translateX(-50%); width: 760px; max-width: 120vw; height: 520px; background: radial-gradient(50% 60% at 50% 40%, var(--red-tint), transparent 70%); pointer-events:none; z-index:0; }
   .hero .glow-cta {
     position:absolute; left:0; top:0; z-index:0; pointer-events:none;
@@ -259,8 +259,8 @@
   }
   .hero .glow-cta.returning { transition: transform .75s cubic-bezier(.22,.61,.36,1); }
   @media (prefers-reduced-motion: reduce) { .hero .glow-cta { transition: none; } }
-  .hero-inner { position: relative; z-index: 1; max-width: 860px; margin-inline: auto; }
-  .hero h1 { font-size: clamp(40px, 6.6vw, 78px); line-height: 1.03; font-weight: 720; }
+  .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(28px, 5vw, 58px); align-items: center; text-align: left; }
+  .hero h1 { font-size: clamp(36px, 5.2vw, 64px); line-height: 1.05; font-weight: 720; text-align: left; }
   /* "Noise" — peeling sticker */
   .hero h1 .noise-wrap { position: relative; display: inline-block; }
   .hero h1 .hl {
@@ -323,9 +323,60 @@
   .hero h1 .rd { display:inline-flex; align-items:center; gap:.16em; color: var(--navy); }
   .hero h1 .rd .swirl { width: .82em; height: .82em; color: var(--red); }
   .hero h1 .rd .ev { color: var(--red); }
-  .hero p.lede { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 52ch; margin: 26px auto 0; }
-  .hero-cta { display:flex; gap: 14px; justify-content:center; margin-top: 34px; flex-wrap: wrap; }
-  .cta-note { text-align: center; margin: 16px 0 0; font-size: 14px; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; justify-content: center; width: 100%; }
+  .hero p.lede { font-size: clamp(16px, 1.7vw, 19px); color: var(--muted); max-width: 46ch; margin: 22px 0 0; text-align: left; }
+  .hero-cta { display:flex; gap: 14px; justify-content:flex-start; margin-top: 30px; flex-wrap: wrap; }
+  .cta-note { text-align: left; margin: 16px 0 0; font-size: 14px; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; justify-content: flex-start; width: auto; }
+
+  /* circular-arrow buttons */
+  .btn-circ { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .btn-circ svg { width: 13px; height: 13px; }
+  .liquid-btn { padding-left: 9px; }
+  .liquid-btn .btn-circ { background: #fff; color: var(--red-ink); }
+  .btn-ghost { display: inline-flex; align-items: center; gap: 9px; padding: 11px 22px 11px 9px; border-radius: 999px; border: 1px solid var(--hairline-strong); background: var(--surface); color: var(--ink); font-family: var(--f-body); font-size: 16px; font-weight: 560; cursor: pointer; transition: border-color .2s, transform .15s; }
+  .btn-ghost:hover { border-color: var(--ink); transform: translateY(-1px); }
+  .btn-ghost .btn-circ { background: var(--ink); color: #fff; }
+
+  /* hero stats + avatar stack */
+  .hero-stats { display: flex; align-items: center; gap: clamp(22px, 3vw, 40px); margin-top: clamp(34px, 4vw, 46px); flex-wrap: wrap; }
+  .avatar-stack { display: flex; align-items: center; }
+  .avatar-stack .av { width: 44px; height: 44px; border-radius: 50%; border: 2.5px solid var(--ground); margin-left: -13px; flex: none; }
+  .avatar-stack .av:first-child { margin-left: 0; }
+  .avatar-stack .av.plus { background: var(--surface); border: 1px solid var(--hairline-strong); color: var(--ink); display: grid; place-items: center; font-size: 18px; }
+  .stat-item .sv { font-family: var(--f-display); font-weight: 720; font-size: clamp(24px, 3vw, 30px); color: var(--red-ink); letter-spacing: -.02em; line-height: 1; }
+  .stat-item .sl { font-size: 13px; color: var(--muted); margin-top: 5px; }
+
+  /* hero visual (right) — colorful blob + placeholder + floating cards */
+  .hero-visual { position: relative; min-height: clamp(380px, 42vw, 500px); }
+  .hv-blob { position: absolute; inset: 4% 2% 2% 4%; z-index: 0;
+    background: radial-gradient(60% 55% at 35% 30%, #7be0a6, transparent 60%),
+                linear-gradient(145deg, #22c47a 0%, #12a150 45%, #0c7a44 100%);
+    border-radius: 62% 38% 56% 44% / 58% 44% 56% 42%; filter: blur(1px); }
+  .hv-photo { position: absolute; inset: 12% 6% 0 10%; z-index: 1; border-radius: 26px; overflow: hidden;
+    background: linear-gradient(160deg, #17583a, #0c2c1d 70%);
+    box-shadow: 0 30px 60px -28px rgba(0,0,0,.5); }
+  .hv-photo::after { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 50% at 60% 25%, rgba(255,255,255,.18), transparent 60%); }
+  .hv-card { position: absolute; z-index: 2; background: var(--surface); border-radius: 14px; box-shadow: 0 18px 40px -18px rgba(0,0,0,.4); padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+  .hv-card .av { width: 34px; height: 34px; border-radius: 50%; flex: none; }
+  .hv-card .t { font-size: 13px; line-height: 1.3; color: var(--ink); }
+  .hv-card .t b { font-weight: 660; }
+  .hv-like { top: 24%; left: -4%; }
+  .hv-balance { top: 8%; right: 2%; background: var(--ink); color: #fff; flex-direction: column; align-items: flex-start; gap: 2px; }
+  .hv-balance .l { font-size: 11px; color: rgba(255,255,255,.7); }
+  .hv-balance .v { font-family: var(--f-display); font-weight: 700; font-size: 18px; }
+  .hv-star { bottom: 12%; left: 2%; width: 52px; height: 52px; border-radius: 16px; justify-content: center; padding: 0; font-size: 24px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .hv-blob { animation: blobFloat 9s ease-in-out infinite; }
+    .hv-like { animation: cardFloat 5s ease-in-out infinite; }
+    .hv-balance { animation: cardFloat 6s ease-in-out infinite .5s; }
+  }
+  @keyframes blobFloat { 50% { border-radius: 54% 46% 44% 56% / 50% 52% 48% 50%; } }
+  @keyframes cardFloat { 50% { transform: translateY(-8px); } }
+
+  @media (max-width: 880px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .hero h1 { font-size: clamp(34px, 9vw, 54px); }
+  }
   .cta-note::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px var(--red-tint); flex: none; }
 
   /* marquee */
@@ -712,18 +763,38 @@
     <div class="glow"></div>
     <div class="glow-cta"></div>
     <div class="wrap hero-inner">
-      <span class="eyebrow center reveal">Digital Marketing Studio</span>
-      <h1 class="reveal" style="margin-top:22px;">Rise Above the <span class="noise-wrap"><span class="hl">Noise</span><span class="peel" aria-hidden="true"></span></span><br>with <span class="rd"><svg class="swirl"><use href="#swirl"/></svg><span class="rdw">RD<span class="ev">Vate</span>.</span></span></h1>
-      <p class="lede reveal">At RDVate, we craft bold, innovative strategies that help your brand rise above the noise and truly connect with your audience.</p>
-      <div class="hero-cta reveal">
-        <a class="liquid-btn" href="#contact">
-          <span class="lb-bg" aria-hidden="true"></span>
-          <span class="lb-distort" aria-hidden="true"></span>
-          <span class="lb-shine" aria-hidden="true"></span>
-          <span class="lb-label">Let's Connect <span class="arrow">&rarr;</span></span>
-        </a>
+      <div class="hero-left">
+        <span class="eyebrow reveal">Digital Marketing Studio</span>
+        <h1 class="reveal" style="margin-top:18px;">Rise Above the <span class="noise-wrap"><span class="hl">Noise</span><span class="peel" aria-hidden="true"></span></span><br>with <span class="rd"><svg class="swirl"><use href="#swirl"/></svg><span class="rdw">RD<span class="ev">Vate</span>.</span></span></h1>
+        <p class="lede reveal">At RDVate, we craft bold, innovative strategies that help your brand rise above the noise and truly connect with your audience.</p>
+        <div class="hero-cta reveal">
+          <a class="liquid-btn" href="#contact">
+            <span class="lb-bg" aria-hidden="true"></span>
+            <span class="lb-distort" aria-hidden="true"></span>
+            <span class="lb-shine" aria-hidden="true"></span>
+            <span class="lb-label"><span class="btn-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>Let's Connect</span>
+          </a>
+          <a class="btn-ghost" href="#services"><span class="btn-circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>View Services</a>
+        </div>
+        <div class="hero-stats reveal">
+          <div class="avatar-stack">
+            <span class="av" style="background:linear-gradient(135deg,#ffb37a,#e8663a);"></span>
+            <span class="av" style="background:linear-gradient(135deg,#7bd0a6,#2f9e6a);"></span>
+            <span class="av" style="background:linear-gradient(135deg,#8ea2ff,#4a5fc9);"></span>
+            <span class="av plus">+</span>
+          </div>
+          <div class="stat-item"><div class="sv">40+</div><div class="sl">Brands scaled</div></div>
+          <div class="stat-item"><div class="sv">3.4×</div><div class="sl">Median ROAS</div></div>
+        </div>
       </div>
-      <p class="cta-note reveal">A free 30-minute call — no pitch, no pressure.</p>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="hv-blob"></div>
+        <div class="hv-photo"></div>
+        <div class="hv-card hv-balance"><div class="l">Revenue influenced</div><div class="v">$28M+</div></div>
+        <div class="hv-card hv-like"><span class="av" style="background:linear-gradient(135deg,#f6a6d8,#c94a9e);"></span><span class="t"><b>Maya</b> likes<br>this studio</span></div>
+        <div class="hv-card hv-star"><svg viewBox="0 0 24 24" width="26" height="26" fill="#F5B301"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 18.9 6.1 21l1.2-6.5L2.5 9.9l6.6-.9L12 2.5z"/></svg></div>
+      </div>
     </div>
     <div class="marquee reveal" aria-hidden="true">
       <div class="marquee-track">
@@ -1108,7 +1179,7 @@
     const rest = () => {
       const hr = hero.getBoundingClientRect();
       const cr = cta.getBoundingClientRect();
-      return { x: hr.width / 2, y: (cr.top - hr.top) + cr.height / 2 };
+      return { x: (cr.left - hr.left) + cr.width / 2, y: (cr.top - hr.top) + cr.height / 2 };
     };
     const toRest = () => { if (glow) glow.classList.add('returning'); const r = rest(); place(r.x, r.y); };
     toRest();
