@@ -518,6 +518,16 @@
   .feat .ic-box svg { width: 22px; height: 22px; }
   .feat h3 { font-size: 19px; margin: 18px 0 8px; font-weight: 640; }
   .feat p { color: var(--muted); font-size: 15px; margin: 0; }
+
+  /* ---------- PROCESS ---------- */
+  .process-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(22px, 3vw, 40px) clamp(28px, 4vw, 56px); }
+  .pstep { display: flex; gap: 16px; align-items: flex-start; }
+  .pstep .pnum { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--red-tint); color: var(--red-ink);
+    font-family: var(--f-mono); font-weight: 600; font-size: 15px; display: grid; place-items: center; font-variant-numeric: tabular-nums; transition: background .25s, color .25s; }
+  .pstep:hover .pnum { background: var(--red); color: #fff; }
+  .pstep h3 { font-size: 18px; font-weight: 650; margin: 8px 0 6px; letter-spacing: -.01em; }
+  .pstep p { font-size: 14.5px; color: var(--muted); line-height: 1.56; margin: 0; }
+  @media (max-width: 720px) { .process-grid { grid-template-columns: 1fr; } }
   .chips { display:flex; flex-wrap:wrap; gap: 10px; justify-content:center; margin-top: 26px; }
   .chip { font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--hairline); border-radius: 999px; padding: 8px 15px; }
   .chip::before { content:"✦"; color: var(--red); margin-right: 7px; }
@@ -807,6 +817,7 @@
       <span class="mo-item"><a href="#top">Home</a></span>
       <span class="mo-item"><a href="#about">About</a></span>
       <span class="mo-item"><a href="#services">Services</a></span>
+      <span class="mo-item"><a href="#process">Process</a></span>
       <span class="mo-item"><a href="#projects">Projects</a></span>
       <span class="mo-item"><a href="#blog">Blog</a></span>
       <span class="mo-item"><a href="#contact">Contact</a></span>
@@ -949,6 +960,26 @@
           <h3>Client-Centric Focus</h3>
           <p>Your success is our priority. We start by deeply understanding your business goals.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="blk" id="process" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">How we work</span>
+        <h2>From first call to lasting growth</h2>
+      </div>
+      <div class="process-grid">
+        <div class="pstep reveal"><div class="pnum">01</div><div><h3>Initial Consultation</h3><p>We start with an in-depth discussion to understand your requirements, goals, and vision — so everything we do is tailored to your specific needs.</p></div></div>
+        <div class="pstep reveal"><div class="pnum">02</div><div><h3>Design Concept</h3><p>Our team creates a concept that aligns with your brand identity and your users' expectations, with mockups and prototypes so you see the direction early.</p></div></div>
+        <div class="pstep reveal"><div class="pnum">03</div><div><h3>Development Phase</h3><p>Once you approve the concept, we bring your vision to life — focused on interactivity, user experience, and real functionality.</p></div></div>
+        <div class="pstep reveal"><div class="pnum">04</div><div><h3>Quality Assurance</h3><p>Rigorous testing and QA: debugging, performance optimization, and cross-device compatibility checks, so everything works flawlessly.</p></div></div>
+        <div class="pstep reveal"><div class="pnum">05</div><div><h3>Client Review</h3><p>Your input matters at every step. You review the work and share feedback to make sure it aligns with your expectations.</p></div></div>
+        <div class="pstep reveal"><div class="pnum">06</div><div><h3>Launch &amp; Deployment</h3><p>When you're satisfied with the final result, we handle deployment — whether it's a website, web app, or campaign — from start to finish.</p></div></div>
+        <div class="pstep reveal"><div class="pnum">07</div><div><h3>Ongoing Support</h3><p>Our commitment doesn't end at launch. We provide continuous support, updates, and maintenance to keep things running smoothly.</p></div></div>
+        <div class="pstep reveal"><div class="pnum">08</div><div><h3>Performance Tracking</h3><p>We monitor performance and make data-driven improvements to keep your project competitive and user-friendly over time.</p></div></div>
       </div>
     </div>
   </section>
