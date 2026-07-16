@@ -372,11 +372,18 @@
   .svc-float h3 { font-size: 18px; margin: 13px 0 6px; font-weight: 640; }
   .svc-float p { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
 
-  /* panel footer — white strip: featured work + logos (like the reference) */
-  .panel-footer { position: relative; z-index: 2; margin-top: clamp(24px, 4vw, 42px);
-    background: var(--surface); border-radius: 22px; padding: 14px 16px;
+  /* panel footer — white strip nestled into the bottom of the dark panel (the "dip") */
+  .panel-footer { position: relative; z-index: 2;
+    margin: clamp(24px, 3vw, 40px) calc(-1 * clamp(22px, 4vw, 48px)) calc(-1 * clamp(38px, 5vw, 58px));
+    background: var(--surface); border-radius: 38px 38px 30px 30px; padding: 20px clamp(22px, 3vw, 36px);
     display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
-    box-shadow: 0 26px 52px -28px rgba(0,0,0,.5); }
+    box-shadow: 0 -8px 26px -16px rgba(0,0,0,.28); }
+  /* concave fillets: the dark panel curves into the white strip */
+  .panel-footer::before, .panel-footer::after {
+    content: ""; position: absolute; bottom: 100%; width: 30px; height: 30px; pointer-events: none;
+  }
+  .panel-footer::before { left: 0; background: radial-gradient(circle at top left, transparent 0 30px, #0a1e14 30px); }
+  .panel-footer::after { right: 0; background: radial-gradient(circle at top right, transparent 0 30px, #0a1e14 30px); }
   .pf-feature { display: flex; align-items: center; gap: 14px; padding: 4px 6px; }
   .pf-thumb { width: 56px; height: 56px; border-radius: 13px; flex: none; background: linear-gradient(135deg, #1f7d55, #0f4f34); }
   .pf-info .pf-loc { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
