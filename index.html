@@ -243,7 +243,7 @@
   @media (max-width: 560px) { .hide-sm { display: none; } }
 
   /* ---------- HERO ---------- */
-  .hero { position: relative; text-align: center; padding: clamp(56px, 9vw, 104px) 0 0; overflow: hidden; }
+  .hero { position: relative; padding: 12px 0 0; }
   .hero .glow { position:absolute; top:-20%; left:50%; transform:translateX(-50%); width: 760px; max-width: 120vw; height: 520px; background: radial-gradient(50% 60% at 50% 40%, var(--red-tint), transparent 70%); pointer-events:none; z-index:0; }
   .hero .glow-cta {
     position:absolute; left:0; top:0; z-index:0; pointer-events:none;
@@ -327,6 +327,58 @@
   .hero-cta { display:flex; gap: 14px; justify-content:center; margin-top: 34px; flex-wrap: wrap; }
   .cta-note { text-align: center; margin: 16px 0 0; font-size: 14px; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; justify-content: center; width: 100%; }
   .cta-note::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 3px var(--red-tint); flex: none; }
+
+  /* ---------- HERO PANEL (contained dark card) ---------- */
+  .hero-panel {
+    position: relative; overflow: hidden; border-radius: 30px;
+    background: radial-gradient(130% 130% at 82% -10%, #1a4c31 0%, #0e3020 44%, #0a1e14 100%);
+    padding: clamp(20px, 3vw, 30px) clamp(22px, 4vw, 48px) clamp(38px, 5vw, 58px);
+    box-shadow: 0 34px 70px -36px rgba(6,32,20,.6), inset 0 1px 0 rgba(255,255,255,.06);
+    color: var(--on-navy);
+  }
+  .panel-nav { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .panel-nav .brand { color: #fff; }
+  .panel-nav .brand .wm b { color: color-mix(in srgb, var(--red) 42%, #fff); }
+  .panel-links { display: flex; gap: clamp(18px, 2vw, 30px); }
+  .panel-links a { font-size: 15px; letter-spacing: -.01em; color: rgba(237,240,251,.7); transition: color .2s; }
+  .panel-links a:hover { color: #fff; }
+  .panel-nav .nav-right { display: flex; align-items: center; gap: 12px; }
+  .panel-nav .menu-toggle { display: none; background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.18); color: #fff; }
+
+  .hero-body { position: relative; z-index: 2; display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(24px, 4vw, 50px); align-items: center; padding-top: clamp(28px, 5vw, 56px); }
+  .hero-left { text-align: left; }
+  .hero-panel .eyebrow { color: color-mix(in srgb, var(--red) 42%, #fff); }
+  .hero-panel h1 { text-align: left; color: #fff; margin: 18px 0 0; font-size: clamp(38px, 5vw, 60px); }
+  .hero-panel h1 .rd { color: #fff; }
+  .hero-panel h1 .rd .ev { color: color-mix(in srgb, var(--red) 42%, #fff); }
+  .hero-panel .lede { color: rgba(237,240,251,.72); margin: 22px 0 0; max-width: 42ch; }
+  .hero-panel .hero-cta { justify-content: flex-start; margin-top: 30px; }
+  .hero-panel .cta-note { color: rgba(237,240,251,.66); justify-content: flex-start; width: auto; }
+  .hero-panel .cta-note::before { box-shadow: 0 0 0 3px rgba(13,162,90,.25); }
+
+  /* right column — overlapping service cards over a media block */
+  .hero-right { position: relative; min-height: 380px; }
+  .hp-media { position: absolute; inset: 4% 0 4% 10%; border-radius: 22px; overflow: hidden;
+    background: linear-gradient(155deg, #2a6a48 0%, #123a26 55%, #0b2417 100%);
+    box-shadow: 0 24px 54px -26px rgba(0,0,0,.6); }
+  .hp-media::after { content:""; position:absolute; inset:0; background: radial-gradient(75% 55% at 72% 18%, rgba(255,255,255,.16), transparent 62%); }
+  .svc-float { position: absolute; background: var(--surface); border-radius: 16px; box-shadow: 0 22px 44px -20px rgba(0,0,0,.55); color: var(--ink); }
+  .sf-tag { top: 6%; right: 6%; padding: 11px 15px; background: #E8836F; color: #fff; font-family: var(--f-display); font-weight: 640; font-size: 14px; border-radius: 12px; z-index: 3; box-shadow: 0 14px 30px -12px rgba(232,131,111,.6); }
+  .sf-card { width: 62%; padding: 20px; }
+  .sf-a { right: 0; top: 26%; z-index: 2; }
+  .sf-b { left: 0; bottom: 7%; z-index: 1; }
+  .svc-float .sf-ic { width: 36px; height: 36px; border-radius: 10px; background: var(--red-tint); color: var(--red-ink); display: grid; place-items: center; }
+  .svc-float .sf-ic svg { width: 20px; height: 20px; }
+  .svc-float h3 { font-size: 18px; margin: 13px 0 6px; font-weight: 640; }
+  .svc-float p { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+
+  @media (max-width: 860px) {
+    .panel-links { display: none; }
+    .panel-nav .menu-toggle { display: inline-flex; }
+    .hero-body { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-panel h1 { font-size: clamp(34px, 9vw, 52px); }
+  }
 
   /* marquee */
   .marquee { margin-top: clamp(48px, 7vw, 84px); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); background: var(--surface); overflow: hidden; }
@@ -630,20 +682,6 @@
   </defs>
 </svg>
 
-<header class="nav" id="nav">
-  <div class="wrap nav-inner">
-    <a class="brand" href="#top"><span class="brand-mark"><svg class="swirl"><use href="#swirl"/></svg></span><span class="wm">RD<b>Vate</b></span></a>
-    <div class="nav-right">
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuOverlay">
-        <span class="mt-label" id="mtLabel">Menu</span>
-        <span class="mt-glyph" aria-hidden="true">
-          <span class="g-dots"><i></i><i></i><i></i><i></i></span>
-          <svg class="g-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
-        </span>
-      </button>
-    </div>
-  </div>
-</header>
 
 <!-- full-screen menu overlay -->
 <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
@@ -676,28 +714,70 @@
 <main id="top">
   <!-- HERO -->
   <section class="hero">
-    <div class="glow"></div>
-    <div class="glow-cta"></div>
-    <div class="wrap hero-inner">
-      <span class="eyebrow center reveal">Digital Marketing Studio</span>
-      <h1 class="reveal" style="margin-top:22px;">Rise Above the <span class="noise-wrap"><span class="hl">Noise</span><span class="peel" aria-hidden="true"></span></span><br>with <span class="rd"><svg class="swirl"><use href="#swirl"/></svg><span class="rdw">RD<span class="ev">Vate</span>.</span></span></h1>
-      <p class="lede reveal">At RDVate, we craft bold, innovative strategies that help your brand rise above the noise and truly connect with your audience.</p>
-      <div class="hero-cta reveal">
-        <a class="liquid-btn" href="#contact">
-          <span class="lb-bg" aria-hidden="true"></span>
-          <span class="lb-distort" aria-hidden="true"></span>
-          <span class="lb-shine" aria-hidden="true"></span>
-          <span class="lb-label">Let's Connect <span class="arrow">&rarr;</span></span>
-        </a>
+    <div class="wrap">
+      <div class="hero-panel reveal">
+        <div class="glow-cta"></div>
+        <nav class="panel-nav">
+          <a class="brand" href="#top"><span class="brand-mark"><svg class="swirl"><use href="#swirl"/></svg></span><span class="wm">RD<b>Vate</b></span></a>
+          <div class="panel-links">
+            <a href="#services">Services</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#projects">Projects</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="nav-right">
+            <a class="btn btn-red hide-sm" href="#contact">Get in touch</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menuOverlay">
+              <span class="mt-label" id="mtLabel">Menu</span>
+              <span class="mt-glyph" aria-hidden="true">
+                <span class="g-dots"><i></i><i></i><i></i><i></i></span>
+                <svg class="g-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+              </span>
+            </button>
+          </div>
+        </nav>
+
+        <div class="hero-body">
+          <div class="hero-left">
+            <span class="eyebrow reveal">Digital Marketing Studio</span>
+            <h1 class="reveal">Rise Above the <span class="noise-wrap"><span class="hl">Noise</span><span class="peel" aria-hidden="true"></span></span><br>with <span class="rd"><svg class="swirl"><use href="#swirl"/></svg><span class="rdw">RD<span class="ev">Vate</span>.</span></span></h1>
+            <p class="lede reveal">At RDVate, we craft bold, innovative strategies that help your brand rise above the noise and truly connect with your audience.</p>
+            <div class="hero-cta reveal">
+              <a class="liquid-btn" href="#contact">
+                <span class="lb-bg" aria-hidden="true"></span>
+                <span class="lb-distort" aria-hidden="true"></span>
+                <span class="lb-shine" aria-hidden="true"></span>
+                <span class="lb-label">Let's Connect <span class="arrow">&rarr;</span></span>
+              </a>
+            </div>
+            <p class="cta-note reveal">A free 30-minute call — no pitch, no pressure.</p>
+          </div>
+
+          <div class="hero-right reveal" aria-hidden="true">
+            <div class="hp-media"></div>
+            <div class="svc-float sf-tag">Our Special Service</div>
+            <div class="svc-float sf-card sf-a">
+              <div class="sf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M15 8a5 5 0 0 1 0 8"/></svg></div>
+              <h3>Paid Media</h3>
+              <p>Facebook Ads, Google Ads, LinkedIn Ads — engineered for ROAS.</p>
+            </div>
+            <div class="svc-float sf-card sf-b">
+              <div class="sf-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+              <h3>SEO &amp; Content</h3>
+              <p>Rank, publish, and grow — compounding month over month.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="cta-note reveal">A free 30-minute call — no pitch, no pressure.</p>
-    </div>
-    <div class="marquee reveal" aria-hidden="true">
-      <div class="marquee-track">
-        <span class="item">Elevating Your Business with Marketing</span>
-        <span class="item">Elevating Your Business with Marketing</span>
-        <span class="item">Elevating Your Business with Marketing</span>
-        <span class="item">Elevating Your Business with Marketing</span>
+
+      <div class="marquee reveal" aria-hidden="true">
+        <div class="marquee-track">
+          <span class="item">Elevating Your Business with Marketing</span>
+          <span class="item">Elevating Your Business with Marketing</span>
+          <span class="item">Elevating Your Business with Marketing</span>
+          <span class="item">Elevating Your Business with Marketing</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1031,8 +1111,10 @@
 
 <script>
   const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
-  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  if (nav) {
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  }
 
   // distinctive full-screen menu
   const menuToggle = document.getElementById('menuToggle');
@@ -1056,27 +1138,28 @@
 
   // hero: green glow follows the cursor, rests behind the buttons
   (function () {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
-    const cta = hero.querySelector('.hero-cta');
-    const glow = hero.querySelector('.glow-cta');
-    const place = (x, y) => { hero.style.setProperty('--gx', x + 'px'); hero.style.setProperty('--gy', y + 'px'); };
+    const panel = document.querySelector('.hero-panel');
+    if (!panel) return;
+    const cta = panel.querySelector('.hero-cta');
+    const glow = panel.querySelector('.glow-cta');
+    if (!cta || !glow) return;
+    const place = (x, y) => { panel.style.setProperty('--gx', x + 'px'); panel.style.setProperty('--gy', y + 'px'); };
     const rest = () => {
-      const hr = hero.getBoundingClientRect();
+      const hr = panel.getBoundingClientRect();
       const cr = cta.getBoundingClientRect();
-      return { x: hr.width / 2, y: (cr.top - hr.top) + cr.height / 2 };
+      return { x: (cr.left - hr.left) + cr.width / 2, y: (cr.top - hr.top) + cr.height / 2 };
     };
-    const toRest = () => { if (glow) glow.classList.add('returning'); const r = rest(); place(r.x, r.y); };
+    const toRest = () => { glow.classList.add('returning'); const r = rest(); place(r.x, r.y); };
     toRest();
     if (!reduce) {
-      // glow only tracks the cursor while over the button row; eases back behind them on leave
+      // glow only tracks the cursor while over the button row; eases back behind it on leave
       cta.addEventListener('pointermove', (e) => {
-        if (glow) glow.classList.remove('returning');
-        const hr = hero.getBoundingClientRect();
+        glow.classList.remove('returning');
+        const hr = panel.getBoundingClientRect();
         place(e.clientX - hr.left, e.clientY - hr.top);
       }, { passive: true });
       cta.addEventListener('pointerleave', toRest);
-      if (glow) glow.addEventListener('transitionend', () => glow.classList.remove('returning'));
+      glow.addEventListener('transitionend', () => glow.classList.remove('returning'));
       window.addEventListener('resize', toRest, { passive: true });
     }
   })();
