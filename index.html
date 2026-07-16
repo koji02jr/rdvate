@@ -422,10 +422,9 @@
   .bento-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
-      "a a b tall"
-      "a a d tall"
-      "w1 w1 w2 w2";
-    grid-auto-rows: minmax(158px, auto); gap: 16px;
+      "b b d tall"
+      "w1 w1 w2 tall";
+    grid-auto-rows: minmax(178px, auto); gap: 16px;
   }
   .bento-item {
     --mouse-x: 50%; --mouse-y: 50%;
@@ -799,26 +798,6 @@
         <h2>Everything you need to grow — in one studio</h2>
       </div>
       <div class="bento-grid reveal">
-        <div class="bento-item b-a">
-          <div>
-            <h3>Real-time Campaign Analytics</h3>
-            <p>Every channel in one live dashboard — spend, ROAS, conversions, and growth, updated by the second so you always know what's working.</p>
-          </div>
-          <div class="bento-chart-box">
-            <div class="bento-cap"><span>REVENUE · LAST 12 MO</span><span class="up">▲ 128%</span></div>
-            <svg class="bento-chart" viewBox="0 0 320 96" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="bfill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="var(--red)" stop-opacity=".26"/>
-                  <stop offset="1" stop-color="var(--red)" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path d="M0,78 L36,70 L72,74 L108,56 L144,60 L180,40 L216,32 L252,20 L288,14 L320,6 L320,96 L0,96 Z" fill="url(#bfill)"/>
-              <path d="M0,78 L36,70 L72,74 L108,56 L144,60 L180,40 L216,32 L252,20 L288,14 L320,6" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="320" cy="6" r="4" fill="var(--red)"/>
-            </svg>
-          </div>
-        </div>
         <div class="bento-item b-b">
           <svg class="b-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
           <h3>Search &amp; SEO</h3>
