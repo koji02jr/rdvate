@@ -117,10 +117,12 @@
     gap: 9px; padding: 17px 32px; border: 0; cursor: pointer; border-radius: 999px;
     background: var(--red); color: #fff; font-family: var(--f-body); font-size: 16px; font-weight: 600; letter-spacing: .005em;
     box-shadow: 0 10px 26px -10px color-mix(in srgb, var(--red) 55%, transparent);
-    transition: transform .25s cubic-bezier(.2,.7,.2,1), background .2s, box-shadow .3s; -webkit-tap-highlight-color: transparent;
+    transition: transform .25s cubic-bezier(.2,.7,.2,1), background .3s, color .3s, box-shadow .3s; -webkit-tap-highlight-color: transparent;
   }
-  .liquid-btn .lb-bg, .liquid-btn .lb-distort, .liquid-btn .lb-shine { display: none; }
-  .liquid-btn:hover { transform: translateY(-2px) scale(1.03); background: var(--red-ink); box-shadow: 0 14px 30px -10px color-mix(in srgb, var(--red) 62%, transparent); }
+  /* solid by default; the glass layers fade in on hover */
+  .liquid-btn .lb-bg, .liquid-btn .lb-distort, .liquid-btn .lb-shine { opacity: 0; transition: opacity .3s ease; }
+  .liquid-btn:hover { transform: translateY(-2px) scale(1.03); background: transparent; color: var(--ink); box-shadow: none; }
+  .liquid-btn:hover .lb-bg, .liquid-btn:hover .lb-distort, .liquid-btn:hover .lb-shine { opacity: 1; }
   .liquid-btn:active { transform: translateY(0) scale(.98); }
   .liquid-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   .liquid-btn .lb-bg { position: absolute; inset: 0; z-index: -3; border-radius: inherit; backdrop-filter: blur(4px) saturate(1.7); -webkit-backdrop-filter: blur(4px) saturate(1.7); }
@@ -194,9 +196,41 @@
     background: var(--surface); border: 1px solid var(--hairline); color: var(--ink);
     border-radius: 999px; padding: 9px 9px 9px 18px; height: 44px;
     font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
-    transition: border-color .25s, background .25s, color .25s;
+    transition: border-color .3s, background .3s, box-shadow .3s, transform .25s cubic-bezier(.2,.7,.2,1);
   }
-  .menu-toggle:hover { border-color: var(--hairline-strong); }
+  /* solid by default; turns glassy on hover */
+  .menu-toggle:hover {
+    transform: translateY(-1px); border-color: transparent;
+    background: color-mix(in srgb, var(--red) 18%, rgba(255,255,255,.55));
+    backdrop-filter: blur(4px) saturate(1.7); -webkit-backdrop-filter: blur(4px) saturate(1.7);
+    box-shadow:
+      0 0 6px rgba(0,0,0,.03), 0 2px 6px rgba(0,0,0,.08),
+      inset 3px 3px .5px -3px rgba(255,255,255,.9), inset -3px -3px .5px -3px rgba(0,0,0,.28),
+      inset 1px 1px 1px -.5px rgba(255,255,255,.6), inset -1px -1px 1px -.5px rgba(0,0,0,.3),
+      inset 0 0 6px 6px rgba(255,255,255,.12), inset 0 0 2px 2px rgba(255,255,255,.06),
+      0 0 12px rgba(255,255,255,.22);
+  }
+  @media (prefers-color-scheme: dark) {
+    .menu-toggle:hover {
+      background: color-mix(in srgb, var(--red) 22%, rgba(15,20,16,.5));
+      box-shadow:
+        0 0 8px rgba(0,0,0,.03), 0 2px 6px rgba(0,0,0,.08),
+        inset 3px 3px .5px -3.5px rgba(255,255,255,.5), inset -3px -3px .5px -3.5px rgba(255,255,255,.2),
+        inset 1px 1px 1px -.5px rgba(255,255,255,.4), inset -1px -1px 1px -.5px rgba(255,255,255,.2),
+        inset 0 0 6px 6px rgba(255,255,255,.1), inset 0 0 2px 2px rgba(255,255,255,.06),
+        0 0 12px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"] .menu-toggle:hover {
+    background: color-mix(in srgb, var(--red) 22%, rgba(15,20,16,.5));
+    box-shadow:
+      0 0 8px rgba(0,0,0,.03), 0 2px 6px rgba(0,0,0,.08),
+      inset 3px 3px .5px -3.5px rgba(255,255,255,.5), inset -3px -3px .5px -3.5px rgba(255,255,255,.2),
+      inset 1px 1px 1px -.5px rgba(255,255,255,.4), inset -1px -1px 1px -.5px rgba(255,255,255,.2),
+      inset 0 0 6px 6px rgba(255,255,255,.1), inset 0 0 2px 2px rgba(255,255,255,.06),
+      0 0 12px rgba(0,0,0,.25);
+  }
+  @media (prefers-reduced-motion: reduce) { .menu-toggle:hover { transform: none; } }
   .mt-label { line-height: 1; padding-bottom: 1px; }
   .mt-glyph { position: relative; width: 26px; height: 26px; border-radius: 50%; background: var(--red); flex: none; display:grid; place-items:center; color:#fff; }
   .mt-glyph .g-dots { display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; width: 11px; height: 11px; transition: opacity .3s, transform .4s cubic-bezier(.2,.7,.2,1); }
