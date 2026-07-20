@@ -169,6 +169,33 @@ a{color:inherit;text-decoration:none;}
 .say.no .mk{color:#e58a7a;}
 .say span:last-child{color:rgba(233,243,232,.82);}
 
+/* ---- collateral (system in use) ---- */
+.use-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;}
+.menu-card{grid-row:span 2;background:linear-gradient(170deg,var(--forest),var(--forest-2));border-radius:20px;padding:clamp(24px,3vw,36px);color:#eef4ea;display:flex;flex-direction:column;}
+.menu-top{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:20px;margin-bottom:20px;}
+.menu-top img{width:118px;height:auto;}
+.menu-kicker{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);text-align:right;line-height:1.7;}
+.menu-group + .menu-group{margin-top:20px;}
+.menu-group h4{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);font-weight:600;margin-bottom:8px;}
+.menu-item{display:flex;flex-direction:column;gap:2px;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.10);}
+.menu-item:last-child{border-bottom:0;}
+.mi-name{font-family:var(--f-display);font-weight:600;font-size:18px;color:#fff;letter-spacing:-.01em;}
+.mi-desc{font-size:13.5px;color:rgba(233,243,232,.68);}
+.menu-foot{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;color:rgba(233,243,232,.5);margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,.10);}
+.info-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;}
+.info-card .ic-h{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-ink);font-weight:600;}
+.ic-addr{font-family:var(--f-display);font-weight:600;font-size:20px;line-height:1.25;color:var(--forest);margin:12px 0 0;}
+.ic-hours{margin:18px 0 0;border-top:1px solid var(--line);}
+.ic-hours>div{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px;}
+.ic-hours>div span:first-child{color:var(--muted);}
+.ic-hours>div span:last-child{font-family:var(--f-mono);font-size:12.5px;color:var(--ink);}
+.ic-hours>div.closed span:last-child{color:#b4462f;}
+.ic-foot{display:flex;justify-content:space-between;gap:12px;margin-top:16px;font-family:var(--f-mono);font-size:12px;color:var(--muted);}
+.social-card{background:linear-gradient(155deg,var(--pine),var(--forest-2));border-radius:20px;padding:clamp(20px,3vw,28px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;aspect-ratio:1/1;}
+.social-card img{width:66%;height:auto;}
+.soc-tag{font-family:var(--f-display);font-weight:620;font-size:clamp(16px,1.9vw,21px);color:#fff;margin:0;letter-spacing:-.01em;}
+.soc-hand{font-family:var(--f-mono);font-size:12px;letter-spacing:.05em;color:var(--lime);}
+
 /* ---- applications ---- */
 .apps{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-flow:dense;gap:16px;}
 .apps figure{margin:0;border-radius:18px;overflow:hidden;position:relative;border:1px solid var(--line);background:#fff;}
@@ -191,11 +218,14 @@ a{color:inherit;text-decoration:none;}
 
 @media (max-width:860px){
   .hero-in{grid-template-columns:1fr;}
-  .logo-grid,.type-grid{grid-template-columns:1fr;}
+  .logo-grid,.type-grid,.use-grid{grid-template-columns:1fr;}
+  .menu-card{grid-row:auto;}
+  .social-card{aspect-ratio:16/9;}
   .pillars,.donts,.swatches,.voice{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:560px){
   .pillars,.donts,.swatches,.voice,.var-grid,.apps{grid-template-columns:1fr;}
+  .social-card{aspect-ratio:4/3;}
   .apps figure.wide{grid-column:span 1;}
   .apps figure.tall{grid-row:span 1;}
   .apps figure.tall img{aspect-ratio:3/4;}
@@ -334,9 +364,55 @@ a{color:inherit;text-decoration:none;}
   </div>
 </div></section>
 
-<!-- 07 APPLICATIONS -->
+<!-- 07 SYSTEM IN USE -->
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">07 &mdash; The system in use</span><h2>Built, not just described</h2>
+  <p>The identity applied to everyday pieces &mdash; a menu, an hours card and a social template &mdash; using only the color, type and logo rules from this guide. Dishes are from the Lulu menu; prices are left off, so this reads as a layout specimen.</p></div>
+  <div class="use-grid">
+    <article class="menu-card">
+      <div class="menu-top"><img class="mark-white" src="img/lulu/logo-mark.png" alt="Lulu"><span class="menu-kicker">Menu<br>Ethio&nbsp;Vegan</span></div>
+      <div>
+        <div class="menu-group"><h4>Starters</h4>
+          <div class="menu-item"><span class="mi-name">Sambusas</span><span class="mi-desc">Crisp pastry, spiced lentils, house dipping sauces</span></div>
+          <div class="menu-item"><span class="mi-name">House Salad</span><span class="mi-desc">Lettuce, tomato, onion, vinegar dressing</span></div>
+          <div class="menu-item"><span class="mi-name">Mushroom Saut&eacute;</span><span class="mi-desc">Minced mushroom, onion &amp; jalape&ntilde;o, seasoned</span></div>
+        </div>
+        <div class="menu-group"><h4>Mains</h4>
+          <div class="menu-item"><span class="mi-name">Ethiopian Chickpea Stew</span><span class="mi-desc">Slow-simmered, warm-spiced, injera on the side</span></div>
+          <div class="menu-item"><span class="mi-name">Falafel &amp; Basmati</span><span class="mi-desc">Herbed chickpea fritters, fluffy rice</span></div>
+          <div class="menu-item"><span class="mi-name">Spicy Spaghetti</span><span class="mi-desc">Plant-based, house spicy sauce</span></div>
+        </div>
+        <div class="menu-group"><h4>Sweets</h4>
+          <div class="menu-item"><span class="mi-name">Baklava</span><span class="mi-desc">Flaky layers, nutty, honey-free</span></div>
+          <div class="menu-item"><span class="mi-name">Chocolate Cupcake</span><span class="mi-desc">Rich and fully vegan</span></div>
+          <div class="menu-item"><span class="mi-name">Fruit Smoothie</span><span class="mi-desc">Blended fresh to order</span></div>
+        </div>
+      </div>
+      <div class="menu-foot">Layout specimen &middot; dishes from luluethiovegan.com</div>
+    </article>
+    <article class="info-card">
+      <span class="ic-h">Visit</span>
+      <p class="ic-addr">12 East Franklin Avenue<br>Minneapolis, MN 55404</p>
+      <div class="ic-hours">
+        <div><span>Mon</span><span>11:00 &ndash; 20:30</span></div>
+        <div class="closed"><span>Tue</span><span>Closed</span></div>
+        <div><span>Wed &ndash; Thu</span><span>11:00 &ndash; 20:30</span></div>
+        <div><span>Fri &ndash; Sat</span><span>11:00 &ndash; 21:00</span></div>
+        <div><span>Sun</span><span>11:00 &ndash; 20:30</span></div>
+      </div>
+      <div class="ic-foot"><span>(612) 353-5758</span><span>luluethiovegan.com</span></div>
+    </article>
+    <article class="social-card">
+      <img class="mark-white" src="img/lulu/logo-mark.png" alt="Lulu">
+      <p class="soc-tag">Where flavor &amp; passion meet.</p>
+      <span class="soc-hand">@luluethiovegan</span>
+    </article>
+  </div>
+</div></section>
+
+<!-- 08 APPLICATIONS -->
 <section class="sec alt"><div class="wrap">
-  <div class="sec-head"><span class="sec-num">07 &mdash; In the wild</span><h2>The system, applied</h2>
+  <div class="sec-head"><span class="sec-num">08 &mdash; In the wild</span><h2>The system, applied</h2>
   <p>One identity carried consistently across every touchpoint &mdash; from the rider&rsquo;s bag to the shopfront window.</p></div>
   <div class="apps">
     <figure class="wide"><img src="img/lulu/storefront.jpg" alt="Lulu storefront window vinyl"><figcaption>Storefront window vinyl</figcaption></figure>
