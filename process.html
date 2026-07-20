@@ -200,6 +200,14 @@ header.nav { position:sticky; top:0; z-index:50; background:color-mix(in srgb,va
   .mo-socials svg { width: 15px; height: 15px; }
   @media (prefers-reduced-motion: reduce) { body.menu-open .mo-item { animation: none; } }
   @media (max-width: 560px) { .hide-sm { display: none; } }
+
+footer { border-top:1px solid var(--hairline); padding:54px 0 40px; margin-top:clamp(40px,6vw,80px); }
+.foot-top { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:34px; }
+.foot-tag { color:var(--muted); font-size:15px; margin-top:12px; max-width:30ch; }
+.foot-col h4 { font-family:var(--f-mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:4px 0 14px; font-weight:500; }
+.foot-col a { display:block; font-size:15px; color:var(--ink-soft); padding:5px 0; }
+.foot-col a:hover { color:var(--red-ink); }
+.foot-bot { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:46px; padding-top:22px; border-top:1px solid var(--hairline); font-size:13px; color:var(--muted); font-family:var(--f-mono); }
 </style>
 </head>
 <body>
@@ -242,6 +250,7 @@ header.nav { position:sticky; top:0; z-index:50; background:color-mix(in srgb,va
 
   <div class="pd-cta"><a href="book.html">Start your project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a></div>
 </main>
+<footer><div class="wrap"><div class="foot-top"><div><a class="brand" href="index.html"><span class="mark"><svg viewBox="0 0 24 24"><use href="#swirl"/></svg></span>RD<b>Vate</b></a><p class="foot-tag">A digital marketing studio helping ambitious brands rise above the noise.</p></div><div class="foot-col"><h4>Explore</h4><a href="services.html">Services</a><a href="work.html">Work</a><a href="process.html">Process</a><a href="blog.html">Blog</a><a href="index.html#contact">Contact</a></div><div class="foot-col"><h4>Get in touch</h4><a href="mailto:hello@rdvate.com">hello@rdvate.com</a><a href="index.html#contact">Book a call</a><a href="#">LinkedIn</a><a href="#">Instagram</a></div></div><div class="foot-bot"><span>© 2026 RDVate. All rights reserved.</span><span>Rise above the noise.</span></div></div></footer>
 
 <script>
   const STEPS = [
