@@ -553,6 +553,7 @@
   .wr-lbl { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 
   .work-preview { position: fixed; top: 0; left: 0; z-index: 45; pointer-events: none; transform: translate3d(var(--wx, 0px), var(--wy, 0px), 0); will-change: transform; }
+  @media (hover: none), (pointer: coarse), (max-width: 860px) { .work-preview { display: none !important; } }
   .wp-card {
     position: relative; width: 300px; aspect-ratio: 16 / 10; border-radius: 15px; overflow: hidden;
     display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; color: #fff;
@@ -687,6 +688,9 @@
     .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.1); }
     .cs .kpis { gap: 22px; }
     .foot-top { grid-template-columns: 1fr; }
+    .work-row { grid-template-columns: 1fr; gap: 14px; padding: 24px 12px; }
+    .wr-stat { align-items: flex-start; text-align: left; flex-direction: row; gap: 8px; }
+    .wr-stat .wr-num { font-size: 22px; }
   }
 
   /* ---------- accessibility: visible keyboard focus ---------- */
