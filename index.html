@@ -809,6 +809,19 @@
     .sched-cal { border-right: 0; border-bottom: 1px solid var(--hairline); }
     .sched-list { max-height: 220px; }
   }
+
+  /* --- illustrated blog covers + specialities gauge --- */
+  .post .cover { position:relative; overflow:hidden; }
+  .post .cover .art { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .post .cover::after { content:""; position:absolute; inset:0; background:radial-gradient(120% 100% at 78% 12%, rgba(255,255,255,.16), transparent 55%); pointer-events:none; }
+  .post:hover .cover .art { transform: scale(1.04); }
+  .post .cover .art { transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .spec-panel { align-items:flex-start; }
+  .spec-gauge { position:relative; width:clamp(150px,22vw,190px); aspect-ratio:1; margin-bottom:4px; }
+  .spec-gauge svg { width:100%; height:100%; transform:rotate(-90deg); }
+  .spec-gauge .num { position:absolute; inset:0; display:grid; place-items:center; font-family:var(--f-mono); font-weight:600; font-size:clamp(34px,4.6vw,46px); color:#fff; letter-spacing:-.03em; }
+  .spec-gauge .num i { font-style:normal; font-size:.48em; opacity:.62; margin-left:2px; }
+  .spec-spark { width:100%; max-width:240px; height:40px; margin-top:20px; display:block; }
 </style>
 </head>
 <body>
@@ -1103,9 +1116,9 @@
           </div>
         </div>
         <div class="spec-panel reveal">
-          <div class="big">80%</div>
+          <div class="spec-gauge"><svg viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="50" stroke="rgba(255,255,255,.14)" stroke-width="11"/><circle cx="60" cy="60" r="50" stroke="#3ad07d" stroke-width="11" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="62.83"/></svg><span class="num">80<i>%</i></span></div>
           <h3>Enhanced brand visibility</h3>
-          <p>We design captivating, user-friendly websites and brand systems that showcase what makes you different — turning visitors into loyal customers and lifting visibility for the clients we work with.</p>
+          <p>We design captivating, user-friendly websites and brand systems that showcase what makes you different — turning visitors into loyal customers and lifting visibility for the clients we work with.</p><svg class="spec-spark" viewBox="0 0 240 40" fill="none" preserveAspectRatio="none"><path d="M0 34 L48 28 L96 30 L144 18 L192 11 L240 3 L240 40 L0 40Z" fill="url(#spg)" opacity=".18"/><path d="M0 34 L48 28 L96 30 L144 18 L192 11 L240 3" stroke="#3ad07d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="spg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3ad07d"/><stop offset="1" stop-color="#3ad07d" stop-opacity="0"/></linearGradient></defs></svg>
         </div>
       </div>
     </div>
@@ -1123,21 +1136,21 @@
       </div>
       <div class="blog-grid">
         <article class="post reveal">
-          <div class="cover" style="background:linear-gradient(135deg,#0DA25A,#0a5c34);"></div>
+          <div class="cover" style="background:linear-gradient(135deg,#0DA25A,#0a5c34);"><svg class="art" viewBox="0 0 320 180" fill="none" aria-hidden="true"><g fill="#fff" opacity=".5"><rect x="30" y="28" width="58" height="16" rx="8"/><rect x="98" y="44" width="42" height="14" rx="7"/></g><g fill="#fff" opacity=".92"><rect x="150" y="118" width="19" height="38" rx="4"/><rect x="177" y="98" width="19" height="58" rx="4"/><rect x="204" y="76" width="19" height="80" rx="4"/><rect x="231" y="52" width="19" height="104" rx="4"/></g><circle cx="118" cy="102" r="34" fill="rgba(255,255,255,.12)" stroke="#fff" stroke-width="6"/><line x1="144" y1="128" x2="176" y2="160" stroke="#fff" stroke-width="7" stroke-linecap="round"/><path d="M102 112 L114 98 L124 106 L136 90" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="pbody">
             <div class="meta"><span>Feb 1, 2024</span><span>6 min</span></div>
             <h3>Unlocking the Power of SEO: A Guide to Keyword Research and the Right Tools</h3>
           </div>
         </article>
         <article class="post reveal">
-          <div class="cover" style="background:linear-gradient(135deg,#0F2E20,#0a2217);"></div>
+          <div class="cover" style="background:linear-gradient(135deg,#0F2E20,#0a2217);"><svg class="art" viewBox="0 0 320 180" fill="none" aria-hidden="true"><circle cx="196" cy="88" r="42" fill="rgba(255,255,255,.10)" stroke="#fff" stroke-width="6"/><line x1="226" y1="118" x2="260" y2="152" stroke="#fff" stroke-width="7" stroke-linecap="round"/><path d="M196 120 C196 104 196 96 196 76" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M196 98 C176 94 166 78 176 66 C194 68 204 84 196 98Z" fill="#fff" opacity=".92"/><path d="M196 82 C214 78 226 62 218 50 C202 54 192 70 196 82Z" fill="#fff" opacity=".72"/><circle cx="64" cy="54" r="5" fill="#fff" opacity=".5"/><circle cx="92" cy="132" r="4" fill="#fff" opacity=".4"/><path d="M74 118 c-14 -2 -22 -15 -15 -24 12 -1 20 12 15 24Z" fill="#fff" opacity=".45"/></svg></div>
           <div class="pbody">
             <div class="meta"><span>Apr 4, 2024</span><span>5 min</span></div>
             <h3>Unveiling the Power of Organic Search: Why It Matters and How to Leverage It</h3>
           </div>
         </article>
         <article class="post reveal">
-          <div class="cover" style="background:linear-gradient(135deg,#1c7a4a,#0F2E20);"></div>
+          <div class="cover" style="background:linear-gradient(135deg,#1c7a4a,#0F2E20);"><svg class="art" viewBox="0 0 320 180" fill="none" aria-hidden="true"><path d="M92 140 A62 62 0 0 1 216 140" stroke="rgba(255,255,255,.32)" stroke-width="12" stroke-linecap="round"/><path d="M92 140 A62 62 0 0 1 200 92" stroke="#fff" stroke-width="12" stroke-linecap="round"/><line x1="154" y1="140" x2="192" y2="98" stroke="#fff" stroke-width="7" stroke-linecap="round"/><circle cx="154" cy="140" r="9" fill="#fff"/><path d="M236 152 L236 74 M218 92 L236 70 L254 92" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/></svg></div>
           <div class="pbody">
             <div class="meta"><span>Mar 1, 2024</span><span>7 min</span></div>
             <h3>The Ultimate Guide to Boosting Your Website's SEO Performance</h3>
