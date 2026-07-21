@@ -1304,7 +1304,7 @@
     <div class="sched-success">
       <div class="tick"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h3>You're all set!</h3>
-      <p id="schedSuccessMsg">We've opened an email with your details — send it and we'll confirm your call with a calendar invite.</p>
+      <p id="schedSuccessMsg">Your strategy call is booked — a calendar invite is on its way to your inbox.</p>
       <button class="btn btn-red" id="schedDoneBtn" type="button" style="margin:0 auto;">Done</button>
     </div>
   </div>
@@ -1557,15 +1557,36 @@
     prevBtn.addEventListener('click', () => { if (prevBtn.disabled) return; view = new Date(view.getFullYear(), view.getMonth() - 1, 1); renderCal(); });
     nextBtn.addEventListener('click', () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderCal(); });
 
-    $('schedBook').addEventListener('click', () => {
+    $('schedBook').addEventListener('click', async () => {
       const name = nameI.value.trim(), email = emailI.value.trim();
       if (!name) { nameI.focus(); return; }
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { emailI.focus(); return; }
       const when = DOWS[selDate.getDay()] + ', ' + MONTHS[selDate.getMonth()] + ' ' + selDate.getDate() + ', ' + selDate.getFullYear() + ' at ' + fmtTime(selSlot[0], selSlot[1]);
-      const body = "Hi RDVate,%0D%0A%0D%0AI'd like to book a strategy call.%0D%0A%0D%0AName: " + encodeURIComponent(name) + '%0D%0AEmail: ' + encodeURIComponent(email) + '%0D%0APreferred time: ' + encodeURIComponent(when) + '%0D%0A%0D%0AThanks!';
-      $('schedSuccessMsg').textContent = "We've opened an email with your " + fmtTime(selSlot[0], selSlot[1]) + ' request for ' + MONTHS[selDate.getMonth()] + ' ' + selDate.getDate() + " — send it and we'll confirm with a calendar invite to " + email + '.';
-      window.location.href = 'mailto:hello@rdvate.com?subject=' + encodeURIComponent('Strategy call — ' + when) + '&body=' + body;
+      const bk = $('schedBook'), lbl = bk.textContent;
+      let err = document.getElementById('schedErr');
+      if (!err) { err = document.createElement('div'); err.id = 'schedErr'; err.style.cssText = 'color:#c0392b;font-size:13px;margin-top:10px;text-align:center;'; $('schedConfirm').appendChild(err); }
+      err.textContent = ''; bk.disabled = true; bk.textContent = 'Scheduling…';
+      try {
+        const r = await fetch('https://formsubmit.co/ajax/rdvate0@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            _subject: 'New strategy call — ' + name + ' — ' + when,
+            _template: 'table', _captcha: 'false',
+            name: name, email: email, _replyto: email, requested_time: when,
+            message: name + ' (' + email + ') requested a strategy call for ' + when + '.'
+          })
+        });
+        const d = await r.json();
+        if (String(d.success) !== 'true') throw new Error(d.message || 'failed');
+      } catch (e) {
+        bk.disabled = false; bk.textContent = lbl;
+        err.textContent = "Couldn't schedule just now — please try again.";
+        return;
+      }
+      $('schedSuccessMsg').textContent = "You're booked, " + name + "! Your strategy call for " + fmtTime(selSlot[0], selSlot[1]) + ' on ' + DOWS[selDate.getDay()] + ', ' + MONTHS[selDate.getMonth()] + ' ' + selDate.getDate() + " is in — we'll confirm at " + email + ' shortly.';
       document.body.classList.add('sched-done');
+      bk.disabled = false; bk.textContent = lbl;
     });
 
     function open() {
