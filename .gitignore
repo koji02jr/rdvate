@@ -9,3 +9,4 @@
 # Dependencies / logs (not used yet, here for safety)
 node_modules/
 *.log
+.vercel

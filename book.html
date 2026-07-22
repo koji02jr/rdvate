@@ -393,6 +393,10 @@ footer { border-top:1px solid var(--hairline); padding:40px 0; }
           body: JSON.stringify({ name: name, email: email, requested_time: when })
         });
         if (!r.ok) throw new Error('Booking insert failed (' + r.status + ')');
+        fetch('https://formsubmit.co/ajax/rdvate0@gmail.com', {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ _subject: 'New strategy call \u2014 ' + name, _template: 'table', _captcha: 'false', name: name, email: email, requested_time: when })
+        }).catch(function () {});
       } catch (e) {
         bk.disabled = false; bk.textContent = lbl;
         err.textContent = "Couldn't schedule just now — please try again.";
